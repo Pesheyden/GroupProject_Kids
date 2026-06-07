@@ -1,0 +1,55 @@
+{
+    "version": 1,
+    "name": "New Actions",
+    "maps": [
+        {
+            "name": "Test",
+            "id": "eb645778-0abe-40f1-93f2-d739e8f08f2e",
+            "actions": [
+                {
+                    "name": "ges",
+                    "type": "Button",
+                    "id": "a40c81ba-f71a-4a7e-93a0-1c75d5834e6d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "aga",
+                    "type": "Button",
+                    "id": "fec3572a-3268-49fa-809c-26d25354a5f2",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c3f724f1-b7dc-4ea9-abb0-1f60f442d235",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ges",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8ad05cff-0e94-477a-befa-988972e7eacd",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "aga",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

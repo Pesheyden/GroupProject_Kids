@@ -1,6 +1,8 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public interface IInteractable
 {
-    public void Activate();
+    public void Started(PlayerInput playerInput);
+    public void Canceled();
 }

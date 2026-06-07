@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class RainbowStartPoint : MonoBehaviour, IInteractable
 {
@@ -10,30 +12,38 @@ public class RainbowStartPoint : MonoBehaviour, IInteractable
     [SerializeField] private MeshFilter _meshFilter;
     [SerializeField] private Sprite _texture;
 
-    [Header("Settings")] [SerializeField] private float _rainbowWidth;
+    [Header("Ray")] [SerializeField] private float _rainbowWidth;
     [SerializeField] private float _maxDistance;
     [SerializeField] private float _maxRaycastAmounts;
-
+    
     private bool _active;
 
     [SerializeField] private List<Vector3> _rainbowPathPoints = new List<Vector3>();
     private bool _rainbowChanged;
-
-    public void Activate()
+    
+    
+    public void Started(PlayerInput playerInput)
     {
-        _active = !_active;
+        _active = true;
     }
-
-    private void LateUpdate()
+    
+    public void Canceled()
     {
-        if (!_active)
+        _active = false;
+        _meshFilter.mesh = null;
+    }
+    
+    
+    public void LateUpdate()
+    {
+        if(!_active)
             return;
+        
 
         CalculateRainbowPath();
         if (_rainbowChanged)
             Visualize();
     }
-
 
     private void CalculateRainbowPath()
     {
@@ -55,6 +65,8 @@ public class RainbowStartPoint : MonoBehaviour, IInteractable
                 if (hit.transform.CompareTag("RainbowMirror"))
                 {
                     direction = Vector3.Reflect(direction, hit.normal);
+                    position = hit.point;
+                    rainbowPathPoints.Add(hit.point);
                     continue;
                 }
 
@@ -97,98 +109,60 @@ public class RainbowStartPoint : MonoBehaviour, IInteractable
 
     private void Visualize()
     {
-        Debug.Log("Creating Mesh");
         //Create Mesh
-        Mesh mesh = new Mesh();
+        var mesh = new Mesh();
+        mesh.name = "LaserBeam";
 
-        List<Vector3> verticesList = new();
-        List<Vector2> uvList = new();
-        List<int> trianglesList = new();
+        int segmentCount = _rainbowPathPoints.Count - 1;
 
-        // First two vertices
-        verticesList.Add(_rainbowPathPoints[0] + Vector3.up * _rainbowWidth);
-        verticesList.Add(_rainbowPathPoints[0] + Vector3.down * _rainbowWidth);
+        var vertices = new List<Vector3>(segmentCount * 4);
+        var uvs = new List<Vector2>(segmentCount * 4);
+        var triangles = new List<int>(segmentCount * 6);
 
-        // Add placeholder UVs for first segment (will be overwritten)
-        uvList.Add(Vector2.zero);
-        uvList.Add(Vector2.one);
-
-        int lastStartIndex = 0;
-
-        for (int i = 1; i < _rainbowPathPoints.Count; i++)
+        for (int i = 0; i < segmentCount; i++)
         {
-            // Create vertices
-            Vector3 vUp = _rainbowPathPoints[i] + Vector3.up * _rainbowWidth;
-            Vector3 vDown = _rainbowPathPoints[i] + Vector3.down * _rainbowWidth;
+            Vector3 p0 = _rainbowPathPoints[i];
+            Vector3 p1 = _rainbowPathPoints[i + 1];
+            
+            Vector3 side = Vector3.up * _rainbowWidth * 0.5f;
 
-            verticesList.Add(vUp);
-            verticesList.Add(vDown);
+            // Vertices
+            // V1-------V3
+            // |        |
+            // |        |
+            // V0-------V2
+            int baseIndex = vertices.Count;
 
-            // Create triangles
-            trianglesList.Add(lastStartIndex + 1);
-            trianglesList.Add(lastStartIndex);
-            trianglesList.Add(lastStartIndex + 2);
+            vertices.Add(p0 - side); // v0
+            vertices.Add(p0 + side); // v1
+            vertices.Add(p1 - side); // v2
+            vertices.Add(p1 + side); // v3
 
-            trianglesList.Add(lastStartIndex + 3);
-            trianglesList.Add(lastStartIndex + 1);
-            trianglesList.Add(lastStartIndex + 2);
+            // UVs 
+            uvs.Add(new Vector2(0, 0));
+            uvs.Add(new Vector2(0, 1));
+            uvs.Add(new Vector2(1, 0));
+            uvs.Add(new Vector2(1, 1));
 
-            // --- UV CALCULATION FOR THIS SEGMENT ---
+            // Triangles (front)
+            triangles.Add(baseIndex + 0);
+            triangles.Add(baseIndex + 1);
+            triangles.Add(baseIndex + 2);
 
-            // Segment direction
-            Vector3 dir = (_rainbowPathPoints[i] - _rainbowPathPoints[i - 1]).normalized;
-
-            // Laser is vertical, so use Y-up to compute right/forward
-            Vector3 up = Vector3.up;
-            Vector3 right = Vector3.Cross(up, dir).normalized;
-            Vector3 forward = Vector3.Cross(right, up).normalized;
-
-            // Segment vertices (4 total)
-            Vector3 v0 = verticesList[lastStartIndex];
-            Vector3 v1 = verticesList[lastStartIndex + 1];
-            Vector3 v2 = vUp;
-            Vector3 v3 = vDown;
-
-            // Compute U/V values
-            float u0 = Vector3.Dot(v0, right);
-            float v0p = Vector3.Dot(v0, forward);
-
-            float u1 = Vector3.Dot(v1, right);
-            float v1p = Vector3.Dot(v1, forward);
-
-            float u2 = Vector3.Dot(v2, right);
-            float v2p = Vector3.Dot(v2, forward);
-
-            float u3 = Vector3.Dot(v3, right);
-            float v3p = Vector3.Dot(v3, forward);
-
-            // Normalize to 0–1
-            float minU = Mathf.Min(u0, Mathf.Min(u1, Mathf.Min(u2, u3)));
-            float maxU = Mathf.Max(u0, Mathf.Max(u1, Mathf.Max(u2, u3)));
-            float minV = Mathf.Min(v0p, Mathf.Min(v1p, Mathf.Min(v2p, v3p)));
-            float maxV = Mathf.Max(v0p, Mathf.Max(v1p, Mathf.Max(v2p, v3p)));
-
-            float sizeU = maxU - minU;
-            float sizeV = maxV - minV;
-
-            // Overwrite UVs for previous segment (v0, v1)
-            uvList[lastStartIndex] = new Vector2((u0 - minU) / sizeU, (v0p - minV) / sizeV);
-            uvList[lastStartIndex + 1] = new Vector2((u1 - minU) / sizeU, (v1p - minV) / sizeV);
-
-            // Add UVs for new vertices (v2, v3)
-            uvList.Add(new Vector2((u2 - minU) / sizeU, (v2p - minV) / sizeV));
-            uvList.Add(new Vector2((u3 - minU) / sizeU, (v3p - minV) / sizeV));
-
-            lastStartIndex = verticesList.Count - 2;
+            triangles.Add(baseIndex + 2);
+            triangles.Add(baseIndex + 1);
+            triangles.Add(baseIndex + 3);
         }
 
-        mesh.vertices = verticesList.ToArray();
-        mesh.uv = uvList.ToArray();
-        mesh.triangles = trianglesList.ToArray();
-
+        mesh.SetVertices(vertices);
+        mesh.SetUVs(0, uvs);
+        mesh.SetTriangles(triangles,0);
         mesh.RecalculateNormals();
+        
         _meshFilter.mesh = mesh;
     }
+    
+    
 
     private void OnDrawGizmos()
     {

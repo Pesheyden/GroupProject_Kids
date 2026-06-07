@@ -6,7 +6,7 @@ public class RainbowEndpoint : MonoBehaviour
     [SerializeField] private UnityEvent _onHit;
     [SerializeField] private EventSo _onHitEventSo;
 
-    private bool _fired;
+    [SerializeField] private bool _fired;
     public void Hit()
     {
         if (_fired)
