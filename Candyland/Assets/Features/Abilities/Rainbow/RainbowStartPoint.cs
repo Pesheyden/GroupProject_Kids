@@ -27,7 +27,7 @@ public class RainbowStartPoint : MonoBehaviour, IInteractable
         _active = true;
     }
     
-    public void Canceled()
+    public void Canceled(PlayerInput playerInput)
     {
         _active = false;
         _meshFilter.mesh = null;

@@ -8,6 +8,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Features/LevelInteractions/TestingSceneTransition.unity
+    guid: fa978fa3be4696f4c8062df910679885
+  - enabled: 1
+    path: Assets/Features/LevelInteractions/TestingSceneTransition 2.unity
+    guid: 49372f78567c3484c9bf0d1c46405cca
+  - enabled: 1
+    path: Assets/Features/LevelInteractions/TransitionScene.unity
+    guid: 6dbc7211356149b47a5f202a7ffeb95a
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

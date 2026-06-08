@@ -4,5 +4,5 @@ using UnityEngine.InputSystem;
 public interface IInteractable
 {
     public void Started(PlayerInput playerInput);
-    public void Canceled();
+    public void Canceled(PlayerInput playerInput);
 }

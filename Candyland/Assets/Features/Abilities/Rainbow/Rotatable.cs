@@ -39,7 +39,7 @@ public class Rotatable : MonoBehaviour, IInteractable
         _lookAction.canceled += OnLookInput;
     }
     
-    public void Canceled()
+    public void Canceled(PlayerInput playerInput)
     {
         _active = false;
         _camera.enabled = false;

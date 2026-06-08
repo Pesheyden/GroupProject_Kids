@@ -45,9 +45,12 @@ public class Interactor : MonoBehaviour
         
         private void OnInteractCanceled(InputAction.CallbackContext ctx)
         {
+                if(_lastInteractables.Length == 0)
+                        return;
+                
                 foreach (var lastInteractable in _lastInteractables)
                 {
-                        lastInteractable.Canceled();
+                        lastInteractable.Canceled(_playerInput);
                 }
         }
         private void OnDrawGizmos()

@@ -6,6 +6,9 @@ TagManager:
   tags:
   - IgnoreWater
   - StartWaterMixing
+  - RainbowMirror
+  - RainbowEndpoint
+  - SimpleInteraction
   layers:
   - Default
   - TransparentFX
@@ -14,7 +17,7 @@ TagManager:
   - Water
   - UI
   - Obstacles
-  - 
+  - Interactable
   - 
   - 
   - 
