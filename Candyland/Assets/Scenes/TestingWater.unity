@@ -640,7 +640,7 @@ Transform:
   m_GameObject: {fileID: 791223862}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.05381, y: -4.01, z: -0.4}
+  m_LocalPosition: {x: 0.05381, y: 3.18, z: -0.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1055,7 +1055,7 @@ MonoBehaviour:
     x: 0
     y: 0
     z: 0
-  jitterStrength: 0.035
+  jitterStrength: 0.007
   showSpawnBounds: 1
   spawnRegions:
   - centre: {x: 3, y: -1.94, z: 0}
@@ -1066,7 +1066,6 @@ MonoBehaviour:
     size: 4
     debugDisplayCol: {r: 1, g: 0.36862746, b: 0.2627451, a: 0}
     waterColor: {r: 1, g: 0, b: 0, a: 0}
-  waterColor: {r: 0, g: 0, b: 0, a: 0}
   debug_num_particles: 71874
   debug_spawn_volume: 128
 --- !u!114 &1107815495
@@ -1086,12 +1085,12 @@ MonoBehaviour:
   maxTimestepFPS: 60
   iterationsPerFrame: 3
   gravity: -10
-  smoothingRadius: 0.2
+  smoothingRadius: 0.14
   targetDensity: 630
-  pressureMultiplier: 288
-  nearPressureMultiplier: 2.15
-  viscosityStrength: 0.001
-  collisionDamping: 0.95
+  pressureMultiplier: 140
+  nearPressureMultiplier: 0.9
+  viscosityStrength: 0.009
+  collisionDamping: 0.67
   foamActive: 0
   maxFoamParticleCount: 1000
   trappedAirSpawnRate: 0
@@ -1104,17 +1103,19 @@ MonoBehaviour:
   bubbleClassifyMinNeighbours: 20
   bubbleScale: 0.8
   bubbleChangeScaleSpeed: 1
-  currentWaterColour: {r: 0, g: 0, b: 1, a: 1}
   waterColourA: {r: 0, g: 0, b: 1, a: 1}
-  waterColourB: {r: 1, g: 0, b: 0, a: 1}
-  mixAmount: 0
-  colourMixSpeed: 1
+  colourMixSpeed: 0.22
+  mixedWaterColour: {r: 0.5, g: 0, b: 0.8, a: 1}
+  globalMixSpeed: 0.36
+  currentMarchingCubesColour: {r: 0, g: 0, b: 0, a: 0}
+  autoDetectWaterTouching: 1
+  mixCheckEveryFrames: 10
+  purpleDetectionThreshold: 0.15
   maxCollisionBoxes: 8
   maxCollisionSpheres: 8
   maxCollisionCapsules: 8
   objectCollisionDamping: 0.5
   ignoreWaterTag: IgnoreWater
-  ColourMap3D: {fileID: 0}
   renderToTex3D: 1
   densityTextureRes: 150
   compute: {fileID: 7200000, guid: a239ce645eaea074ebe3c34916f1f472, type: 3}

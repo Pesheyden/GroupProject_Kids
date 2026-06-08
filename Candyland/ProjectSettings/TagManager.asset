@@ -4,10 +4,8 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Destroyable
-  - RainbowMirror
-  - RainbowEndpoint
-  - RainbowLaser
+  - IgnoreWater
+  - StartWaterMixing
   layers:
   - Default
   - TransparentFX
@@ -16,8 +14,8 @@ TagManager:
   - Water
   - UI
   - Obstacles
-  - MarshTarget
-  - Interactable
+  - 
+  - 
   - 
   - 
   - 
