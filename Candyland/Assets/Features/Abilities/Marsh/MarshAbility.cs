@@ -48,7 +48,7 @@ public class MarshAbility : MonoBehaviour
         float eclipse = 0; 
         while (eclipse < _duration)
         {
-            Vector3 control = (start + end) * 0.5f + Vector3.up * (start - end).magnitude;
+            Vector3 control = (start + end) * 0.5f + Vector3.up * Mathf.Sqrt( (start - end).sqrMagnitude) / 2;
 
             t = eclipse / _duration;
             
