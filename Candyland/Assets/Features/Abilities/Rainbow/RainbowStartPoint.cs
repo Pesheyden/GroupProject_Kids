@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using NaughtyAttributes;
 using Unity.Cinemachine;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -161,9 +163,16 @@ public class RainbowStartPoint : MonoBehaviour, IInteractable
         
         _meshFilter.mesh = mesh;
     }
-    
-    
 
+#if UNITY_EDITOR
+
+    [Button]
+    public void SeePath()
+    {
+        CalculateRainbowPath();
+    }
+    
+#endif
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
