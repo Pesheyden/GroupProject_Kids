@@ -10,11 +10,15 @@ TagManager:
   - RainbowMirror
   - RainbowEndpoint
   - SimpleInteraction
+  - MintyInteractable
+  - RainbowInteractable
+  - Destroyable
+  - PhysicsObjects
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - Obstacles
