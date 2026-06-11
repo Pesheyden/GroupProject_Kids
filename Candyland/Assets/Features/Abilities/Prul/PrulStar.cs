@@ -68,6 +68,7 @@ public class PrulStar : MonoBehaviour
 
     private void Deactivate()
     {
+        _rigidbody.linearVelocity = Vector3.zero;
         gameObject.SetActive(false);
         _pool.Release(this);
     }
