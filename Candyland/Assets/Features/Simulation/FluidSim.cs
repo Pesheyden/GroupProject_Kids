@@ -72,6 +72,7 @@ namespace Seb.Fluid.Simulation
 		//[HideInInspector] public RenderTexture ColourMap3D;
 
 		List<Collider> collisionColliders = new List<Collider>();
+		private List<Collider> ignoredWaterColliders = new List<Collider>();
 		ComputeBuffer collisionBoxBuffer;
 		ComputeBuffer collisionSphereBuffer;
 		ComputeBuffer collisionCapsuleBuffer;
@@ -591,6 +592,9 @@ namespace Seb.Fluid.Simulation
 
 		public void AddCollisionCollider(Collider other)
 		{
+			if (ignoredWaterColliders.Contains(other))
+				return;
+				
 			if (other.CompareTag(ignoreWaterTag))
 				return;
 
@@ -601,6 +605,12 @@ namespace Seb.Fluid.Simulation
 		public void RemoveCollisionCollider(Collider other)
 		{
 			collisionColliders.Remove(other);
+		}
+
+		public void IgnoreCollider(Collider col)
+		{
+			if (!ignoredWaterColliders.Contains(col))
+				ignoredWaterColliders.Add(col);
 		}
 		
 		public void StartGlobalMixing()

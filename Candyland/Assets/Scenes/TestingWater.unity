@@ -1085,11 +1085,11 @@ MonoBehaviour:
   maxTimestepFPS: 60
   iterationsPerFrame: 3
   gravity: -10
-  smoothingRadius: 0.14
+  smoothingRadius: 0.2
   targetDensity: 630
-  pressureMultiplier: 140
-  nearPressureMultiplier: 0.9
-  viscosityStrength: 0.009
+  pressureMultiplier: 260
+  nearPressureMultiplier: 2
+  viscosityStrength: 0.003
   collisionDamping: 0.67
   foamActive: 0
   maxFoamParticleCount: 1000
