@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -11,6 +11,9 @@ public class PlayerMoveControllerRB : MonoBehaviour
     [SerializeField] private float _moveSpeed = 6f;
     [SerializeField] private float _crouchSpeed = 3f;
     [SerializeField] private float _rotationSpeed = 30f;
+    [SerializeField] private float _maxSlopeAngle = 45f;
+    [SerializeField] private float _slopeSpeedMultiplier = 0.03f;
+    [SerializeField] private float _airSpeedMultiplier = 0.03f;
 
 
     [Header("Jumping")]
@@ -31,6 +34,8 @@ public class PlayerMoveControllerRB : MonoBehaviour
     private Vector2 _moveInput;
     private bool _isGrounded;
     private bool _isCrouching;
+    private bool _slope;
+    private RaycastHit _groundHit;
 
     private void Awake()
     {
@@ -55,7 +60,19 @@ public class PlayerMoveControllerRB : MonoBehaviour
     private void CheckGround()
     {
         Vector3 origin = transform.position + Vector3.up * 0.1f;
-        _isGrounded = Physics.Raycast(origin, Vector3.down, _groundCheckDistance + 0.1f);
+
+        if (Physics.Raycast(origin, Vector3.down, out _groundHit, _groundCheckDistance + 0.1f))
+        {
+            float angle = Vector3.Angle(_groundHit.normal, Vector3.up);
+            _isGrounded = true;
+            _slope = angle >= _maxSlopeAngle;
+            Debug.Log($"{gameObject.transform.parent.name}: " + angle);
+        }
+        else
+        {
+            _isGrounded = false;
+            _slope = false;
+        }
     }
     
     private void UpdateRotation()
@@ -63,16 +80,19 @@ public class PlayerMoveControllerRB : MonoBehaviour
         transform.rotation =
             Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, _orbitalFollow.HorizontalAxis.Value, 0), _rotationSpeed * Time.deltaTime);
     }
-    
+
     private void Move()
     {
         float speed = _isCrouching ? _crouchSpeed : _moveSpeed;
 
-        Vector3 direction =
+        Vector3 inputDirection =
             transform.forward * _moveInput.y +
             transform.right * _moveInput.x;
 
-        Vector3 targetVelocity = direction * speed;
+        // ✅ Project movement onto ground plane (prevents climbing)
+        Vector3 moveDirection = Vector3.ProjectOnPlane(inputDirection, _groundHit.normal).normalized;
+
+        Vector3 targetVelocity = moveDirection * speed;
         Vector3 currentVelocity = _rb.linearVelocity;
 
         Vector3 velocityChange = new Vector3(
@@ -81,7 +101,10 @@ public class PlayerMoveControllerRB : MonoBehaviour
             targetVelocity.z - currentVelocity.z
         );
 
-        _rb.AddForce(velocityChange, ForceMode.VelocityChange);
+        // ✅ Reduce control in air
+        float controlMultiplier = (_isGrounded ? 1f : _airSpeedMultiplier) * (_slope ? _slopeSpeedMultiplier : 1f);
+
+        _rb.AddForce(velocityChange * controlMultiplier, ForceMode.VelocityChange);
     }
 
     private void SmoothCrouch()

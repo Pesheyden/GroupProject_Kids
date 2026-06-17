@@ -184,37 +184,41 @@ public class FlowerPower : MonoBehaviour, IInteractable
     {
         isGrowing = true;
 
-        foreach (var section in flowerSections)
+        for (int j = flowerSections.Count - 1; j >= 0; j--)
         {
+            FlowerSection section = flowerSections[j];
             var flowerStems = section.flowerStems;
             var flowerLeaves = section.flowerLeaves;
             var flowerPetals = section.flowerPetals;
 
-            if (flowerStems != null)
+            if (flowerPetals != null)
             {
-                for (int i = 0; i < flowerStems.Count; i++)
+                for (int i = flowerPetals.Count - 1; i >= 0; i--)
                 {
-                    StartCoroutine(ShrinkPart(flowerPetals[i], _stemGrowTime));
+                    StartCoroutine(ShrinkPart(flowerPetals[i], _petalsGrowTime));
+                    yield return new WaitForSeconds(_petalsGrowTime);
                 }
-                yield return new WaitForSeconds(_stemGrowTime / 2);
+
             }
 
             if (flowerLeaves != null)
             {
-                for (int i = 0; i < flowerLeaves.Count; i++)
+                for (int i = flowerLeaves.Count - 1; i >= 0; i--)
                 {
                     StartCoroutine(ShrinkPart(flowerLeaves[i], _leaveGrowTime));
+                    yield return new WaitForSeconds(_leaveGrowTime);
                 }
-                yield return new WaitForSeconds(_leaveGrowTime);
+
             }
 
-            if (flowerPetals != null)
+            if (flowerStems != null)
             {
-                for (int i = 0; i < flowerPetals.Count; i++)
+                for (int i = flowerStems.Count - 1; i >= 0; i--)
                 {
-                    StartCoroutine(ShrinkStem(flowerPetals[i], _petalsGrowTime));
+                    StartCoroutine(ShrinkStem(flowerStems[i], _stemGrowTime));
+                    yield return new WaitForSeconds(_stemGrowTime);
                 }
-                yield return new WaitForSeconds(_petalsGrowTime);
+
             }
 
         }
@@ -224,6 +228,7 @@ public class FlowerPower : MonoBehaviour, IInteractable
 
     public void Started(PlayerInput playerInput)
     {
+        Debug.Log("Flower Power Started");
         if (isGrowing)
             return;
 

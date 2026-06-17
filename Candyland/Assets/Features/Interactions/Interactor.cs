@@ -14,7 +14,7 @@ public class Interactor : MonoBehaviour
 
         private PlayerInput _playerInput;
         private InputAction _interact;
-        private IInteractable[] _lastInteractables;
+        private IInteractable[] _lastInteractables = new IInteractable[0];
 
 
         private void Awake()
@@ -38,6 +38,7 @@ public class Interactor : MonoBehaviour
                         _lastInteractables = interaction.GetComponents<IInteractable>();
                         foreach (var lastInteractable in _lastInteractables)
                         {
+                                Debug.Log("StartInteraction with " + lastInteractable);
                                 lastInteractable.Started(_playerInput);
                         }
                 }
