@@ -63,7 +63,6 @@ public class PlayerMoveControllerRB : MonoBehaviour
     private CapsuleCollider _capsule;
     private Vector2 _moveInput;
     private bool _isCrouching;
-    private RaycastHit _hitInfo;
 
     private void Awake()
     {
@@ -168,18 +167,21 @@ public class PlayerMoveControllerRB : MonoBehaviour
         transform.rotation =
             Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, _orbitalFollow.HorizontalAxis.Value, 0), _rotationSpeed * Time.deltaTime);
     }
-    
+
     private void Move()
     {
         _rb.linearDamping = 0f;
 
         float speed = _isCrouching ? _crouchSpeed : _moveSpeed;
 
-        Vector3 direction =
+        Vector3 inputDirection =
             transform.forward * _moveInput.y +
             transform.right * _moveInput.x;
 
-        Vector3 targetVelocity = direction * speed;
+        // ✅ Project movement onto ground plane (prevents climbing)
+        Vector3 moveDirection = Vector3.ProjectOnPlane(inputDirection, _groundHit.normal).normalized;
+
+        Vector3 targetVelocity = moveDirection * speed;
         Vector3 currentVelocity = _rb.linearVelocity;
 
         Vector3 velocityChange = new Vector3(
