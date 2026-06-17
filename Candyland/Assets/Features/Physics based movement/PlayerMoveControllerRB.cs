@@ -1,8 +1,10 @@
 using System;
+using ImprovedTimers;
 using Seb.Fluid.Simulation;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityUtils;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(CapsuleCollider))]
@@ -15,11 +17,13 @@ public class PlayerMoveControllerRB : MonoBehaviour
     [SerializeField] private float _moveSpeed = 6f;
     [SerializeField] private float _crouchSpeed = 3f;
     [SerializeField] private float _rotationSpeed = 30f;
-
+    [SerializeField] private float _slopeLimit = 15f;
+    [SerializeField] private float _airSpeedMultiplier;
 
     [Header("Jumping")]
     [SerializeField] private float _jumpForce = 5f;
     [SerializeField] private float _groundCheckDistance = 0.2f;
+    [SerializeField] private float _groundSphereRadius = 0.2f;
 
     [Header("Crouching")]
     [SerializeField] private float _standingHeight = 2f;
@@ -58,8 +62,8 @@ public class PlayerMoveControllerRB : MonoBehaviour
     private Rigidbody _rb;
     private CapsuleCollider _capsule;
     private Vector2 _moveInput;
-    private bool _isGrounded;
     private bool _isCrouching;
+    private RaycastHit _hitInfo;
 
     private void Awake()
     {
@@ -123,21 +127,18 @@ public class PlayerMoveControllerRB : MonoBehaviour
         switch(_currentMonster)
         {
             case MonsterSelector.Marsh:
-                CheckGround();
                 if(_moveInput != Vector2.zero)
                     UpdateRotation();
                 Move();
                 SmoothCrouch();
                 break;
             case MonsterSelector.Minty:
-                CheckGround();
                 if(_moveInput != Vector2.zero)
                     UpdateRotation();
                 Move();
                 SmoothCrouch();
                 break;
             case MonsterSelector.Rainbow:
-                CheckGround();
                 if(_moveInput != Vector2.zero)
                     UpdateRotation();
                 Move();
@@ -152,7 +153,6 @@ public class PlayerMoveControllerRB : MonoBehaviour
                 }
                 else
                 {
-                    CheckGround();
                     if (_moveInput != Vector2.zero)
                         UpdateRotation();
                     Move();
@@ -161,12 +161,7 @@ public class PlayerMoveControllerRB : MonoBehaviour
                 break;
         }
     }
-
-    private void CheckGround()
-    {
-        Vector3 origin = transform.position + Vector3.up * 0.1f;
-        _isGrounded = Physics.Raycast(origin, Vector3.down, _groundCheckDistance + 0.1f);
-    }
+    
     
     private void UpdateRotation()
     {
@@ -193,6 +188,15 @@ public class PlayerMoveControllerRB : MonoBehaviour
             targetVelocity.z - currentVelocity.z
         );
 
+
+        if (IsGroundTooSteep())
+        {
+            Vector3 pointDownVector = Vector3.ProjectOnPlane(_hitInfo.normal, transform.up).normalized;
+            velocityChange = VectorMath.RemoveDotVector(velocityChange, pointDownVector);
+        }
+
+        if (!IsGrounded()) velocityChange *= _airSpeedMultiplier;
+        
         _rb.AddForce(velocityChange, ForceMode.VelocityChange);
     }
 
@@ -278,6 +282,15 @@ public class PlayerMoveControllerRB : MonoBehaviour
         t = Mathf.Clamp01(t);
         return a + ab * t;
     }
+    
+    bool IsGroundTooSteep() => !IsGrounded() || Vector3.Angle(_hitInfo.normal, transform.up) > _slopeLimit;
+    
+    private bool IsGrounded()
+    {
+        Vector3 origin = transform.position + Vector3.up * (_groundSphereRadius + 0.1f);
+        Ray ray = new Ray(origin, Vector3.down);
+        return Physics.SphereCast(ray, _groundSphereRadius, out _hitInfo, _groundCheckDistance + (_groundSphereRadius + 0.1f));
+    }
 
     // Input System Callbacks
     public void OnMove(InputValue value)
@@ -287,7 +300,7 @@ public class PlayerMoveControllerRB : MonoBehaviour
 
     public void OnJump(InputValue value)
     {
-        if (!_isSwimming && value.isPressed && _isGrounded)
+        if (!_isSwimming && value.isPressed && IsGrounded() && !IsGroundTooSteep())
         {
             _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
         }
@@ -323,4 +336,11 @@ public class PlayerMoveControllerRB : MonoBehaviour
         }
     }
 
+    private void OnDrawGizmos()
+    {
+        Vector3 origin = transform.position + Vector3.up * 0.1f;
+        Ray ray = new Ray(origin, Vector3.down);
+        Gizmos.color = IsGrounded() ? Color.green : Color.red;
+        Gizmos.DrawWireSphere(origin + Vector3.down * _groundCheckDistance, _groundSphereRadius);
+    }
 }

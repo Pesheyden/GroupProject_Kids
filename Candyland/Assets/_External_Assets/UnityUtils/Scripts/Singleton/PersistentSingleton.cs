@@ -1,8 +1,9 @@
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Utilities
-{
-    public class Singleton<T> : MonoBehaviour where T : Component {
+namespace UnityUtils {
+    public class PersistentSingleton<T> : MonoBehaviour where T : Component {
+        public bool AutoUnparentOnAwake = true;
+
         protected static T instance;
 
         public static bool HasInstance => instance != null;
@@ -21,7 +22,10 @@ namespace Utilities
                 return instance;
             }
         }
-        
+
+        /// <summary>
+        /// Make sure to call base.Awake() in override if you need awake.
+        /// </summary>
         protected virtual void Awake() {
             InitializeSingleton();
         }
@@ -29,7 +33,18 @@ namespace Utilities
         protected virtual void InitializeSingleton() {
             if (!Application.isPlaying) return;
 
-            instance = this as T;
+            if (AutoUnparentOnAwake) {
+                transform.SetParent(null);
+            }
+
+            if (instance == null) {
+                instance = this as T;
+                DontDestroyOnLoad(gameObject);
+            } else {
+                if (instance != this) {
+                    Destroy(gameObject);
+                }
+            }
         }
     }
 }
