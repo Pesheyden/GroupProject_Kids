@@ -63,6 +63,7 @@ public class PlayerMoveControllerRB : MonoBehaviour
     private CapsuleCollider _capsule;
     private Vector2 _moveInput;
     private bool _isCrouching;
+    private RaycastHit _hitInfo;
 
     private void Awake()
     {
@@ -178,10 +179,8 @@ public class PlayerMoveControllerRB : MonoBehaviour
             transform.forward * _moveInput.y +
             transform.right * _moveInput.x;
 
-        // ✅ Project movement onto ground plane (prevents climbing)
-        Vector3 moveDirection = Vector3.ProjectOnPlane(inputDirection, _groundHit.normal).normalized;
 
-        Vector3 targetVelocity = moveDirection * speed;
+        Vector3 targetVelocity = inputDirection * speed;
         Vector3 currentVelocity = _rb.linearVelocity;
 
         Vector3 velocityChange = new Vector3(
