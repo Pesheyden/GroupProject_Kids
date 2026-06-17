@@ -3,6 +3,14 @@ using System.Collections.Generic;
 using UnityEngine.Events;
 using UnityEditor;
 
+/// <summary>
+/// Tool where you can select a prefab to place in scene view
+/// You can modify its scale and how many to spawn
+/// Hold shift and select 4 point in the scene with RMB to make a spawn area
+/// Press the Spawn Random Objects In Area to spawn objects
+/// Press Ctrl + Z  to reverse (remove the placed prefabs)
+/// After Placing objects press Clear Points button to be able to make new area
+/// </summary>
 public class GameObjectPlacementTool : EditorWindow
 {
     private GameObject _objectToSpawn;

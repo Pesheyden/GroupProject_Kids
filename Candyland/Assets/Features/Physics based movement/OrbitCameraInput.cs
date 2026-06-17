@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Unity.Cinemachine;
+using NaughtyAttributes;
 
 public class OrbitCameraInput : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class OrbitCameraInput : MonoBehaviour
     [SerializeField] private float _verticalSensitivity;
     [SerializeField] private float _horizontalSensitivity;
     private Vector2 lookInput;
+    [SerializeField] private GodCamera _freeCamera;
+    [SerializeField] private MasterControllerTool _masterControllerTool;
 
     private void Awake()
     {
@@ -19,6 +22,12 @@ public class OrbitCameraInput : MonoBehaviour
 
     private void Update()
     {
+        if (_masterControllerTool._hasGodMode)
+        {
+            _freeCamera.FreeCamera(_masterControllerTool.MasterGamepad);
+            return;
+        }
+
         if (orbital == null)
             return;
 
