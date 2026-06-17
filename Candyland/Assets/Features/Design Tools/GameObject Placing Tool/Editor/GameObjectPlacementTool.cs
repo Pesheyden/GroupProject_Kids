@@ -40,7 +40,7 @@ public class GameObjectPlacementTool : EditorWindow
         GUILayout.Label("Prefab Placement Tool", EditorStyles.boldLabel);
 
         _objectToSpawn = (GameObject)EditorGUILayout.ObjectField("Prefab", _objectToSpawn, typeof(GameObject), false);
-        _objectScale = EditorGUILayout.Slider("Object Scale", _objectScale, 1f, 5f);
+        _objectScale = EditorGUILayout.Slider("Object Scale", _objectScale, 1f, 1000f);
         _amountToSpawn = EditorGUILayout.IntField("Amount To Spawn", _amountToSpawn);
 
         GUILayout.Label("Clicked points: " + _clickedPlaces.Count + "/4");
@@ -108,6 +108,10 @@ public class GameObjectPlacementTool : EditorWindow
         for (int i = 0; i < _amountToSpawn; i++)
         {
             Vector3 randomPosition = GetRandomPointInFourPointArea();
+            if (Physics.Raycast(randomPosition, Vector3.down, out var hitInfo))
+            {
+                randomPosition = hitInfo.point;
+            }
 
             GameObject newObject = (GameObject)PrefabUtility.InstantiatePrefab(_objectToSpawn);
             newObject.transform.position = randomPosition;

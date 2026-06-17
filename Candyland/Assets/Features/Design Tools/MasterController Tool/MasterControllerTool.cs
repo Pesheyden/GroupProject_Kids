@@ -2,16 +2,15 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using NaughtyAttributes;
+using UnityEngine.InputSystem.Utilities;
 
 public class MasterControllerTool : MonoBehaviour
 {
     [Header("Players")]
     [SerializeField] private List<PlayerMoveControllerRB> _moveControllers = new();
     [SerializeField] private List<PlayerInput> _playerInputs = new();
-    [SerializeField] private List<GameObject> _characterCameras = new();
 
     [Header("Split Screen UI")]
-    [SerializeField] private List<GameObject> _playerCameraUI = new();
     [SerializeField] private GameObject _godCameraUI;
 
     [Header("God Camera")]
@@ -19,6 +18,8 @@ public class MasterControllerTool : MonoBehaviour
 
     private Gamepad _masterGamepad;
     public Gamepad MasterGamepad => _masterGamepad;
+
+    private List<InputDevice[]>_basicControlDevices = new();
 
     public bool _hasGodMode;
     private int _currentCharacterIndex = 0;
@@ -30,17 +31,16 @@ public class MasterControllerTool : MonoBehaviour
             _masterGamepad = Gamepad.all[0];
             Debug.Log("Master Controller: " + _masterGamepad.displayName);
         }
+        
 
-        // Cameras stay active because they render to Render Textures.
-        for (int i = 0; i < _characterCameras.Count; i++)
+        foreach (var playerInput in _playerInputs)
         {
-            _characterCameras[i].SetActive(true);
+            _basicControlDevices.Add(playerInput.devices.ToArray());
         }
 
         _godCamera.SetActive(false);
         _godCameraUI.SetActive(false);
-
-        ShowPlayerSplitScreen(true);
+        
         SetActiveCharacter(0);
     }
 
@@ -61,6 +61,11 @@ public class MasterControllerTool : MonoBehaviour
         {
             SwitchCharacter();
         }
+
+        if (!_hasGodMode && _masterGamepad.leftTrigger.wasPressedThisFrame)
+        {
+            
+        }
     }
 
     [Button]
@@ -80,12 +85,11 @@ public class MasterControllerTool : MonoBehaviour
         }
 
         // Put god camera at current selected player's camera.
-        _godCamera.transform.position = _characterCameras[_currentCharacterIndex].transform.position;
-        _godCamera.transform.rotation = _characterCameras[_currentCharacterIndex].transform.rotation;
+        _godCamera.transform.position = _moveControllers[0].transform.position;
+        _godCamera.transform.rotation = _moveControllers[0].transform.rotation;
 
         _godCamera.SetActive(true);
-
-        ShowPlayerSplitScreen(false);
+        
         _godCameraUI.SetActive(true);
     }
 
@@ -96,8 +100,7 @@ public class MasterControllerTool : MonoBehaviour
 
         _godCamera.SetActive(false);
         _godCameraUI.SetActive(false);
-
-        ShowPlayerSplitScreen(true);
+        
         SetActiveCharacter(_currentCharacterIndex);
     }
 
@@ -127,19 +130,14 @@ public class MasterControllerTool : MonoBehaviour
             {
                 _playerInputs[i].SwitchCurrentControlScheme("Gamepad", _masterGamepad);
             }
+            else
+            {
+                _playerInputs[i].SwitchCurrentControlScheme("Gamepad", _basicControlDevices[i]);
+            }
         }
-
-        _godCamera.transform.position = _characterCameras[index].transform.position;
-        _godCamera.transform.rotation = _characterCameras[index].transform.rotation;
+        
 
         Debug.Log("Now controlling player: " + index);
     }
-
-    private void ShowPlayerSplitScreen(bool show)
-    {
-        for (int i = 0; i < _playerCameraUI.Count; i++)
-        {
-            _playerCameraUI[i].SetActive(show);
-        }
-    }
+    
 }

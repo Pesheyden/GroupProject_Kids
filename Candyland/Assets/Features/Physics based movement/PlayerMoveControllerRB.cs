@@ -54,7 +54,7 @@ public class PlayerMoveControllerRB : MonoBehaviour
     private bool _isInWaterVolume; 
 
     [Header("References")]
-    [SerializeField] private CinemachineOrbitalFollow _orbitalFollow;
+    public CinemachineOrbitalFollow OrbitalFollow;
     [SerializeField] private CinemachineCamera _normalCam;
     [SerializeField] private CinemachineCamera _underwaterCam;
     [SerializeField] private Transform _playerItems;
@@ -166,7 +166,7 @@ public class PlayerMoveControllerRB : MonoBehaviour
     private void UpdateRotation()
     {
         transform.rotation =
-            Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, _orbitalFollow.HorizontalAxis.Value, 0), _rotationSpeed * Time.deltaTime);
+            Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, OrbitalFollow.HorizontalAxis.Value, 0), _rotationSpeed * Time.deltaTime);
     }
 
     private void Move()
