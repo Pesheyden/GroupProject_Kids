@@ -13,6 +13,7 @@
   <Project Path="Unity.VisualScripting.Core.Editor.csproj" />
   <Project Path="Unity.PerformanceTesting.Editor.csproj" />
   <Project Path="Unity.Splines.csproj" />
+  <Project Path="UnityUtils.csproj" />
   <Project Path="Unity.Burst.csproj" />
   <Project Path="Unity.VisualScripting.Flow.Editor.csproj" />
   <Project Path="Unity.ProBuilder.Csg.csproj" />
@@ -36,6 +37,7 @@
   <Project Path="Unity.Rider.Editor.csproj" />
   <Project Path="Unity.VisualScripting.State.csproj" />
   <Project Path="Unity.AI.Navigation.Updater.csproj" />
+  <Project Path="ImprovedTimers.csproj" />
   <Project Path="Unity.AI.Navigation.Editor.csproj" />
   <Project Path="Unity.ProBuilder.KdTree.csproj" />
   <Project Path="Unity.ProBuilder.AddOns.Editor.csproj" />
@@ -49,9 +51,11 @@
   <Project Path="Unity.InputSystem.TestFramework.csproj" />
   <Project Path="Unity.VisualScripting.Shared.Editor.csproj" />
   <Project Path="Unity.CollabProxy.Editor.csproj" />
+  <Project Path="UnityUtils.Hotkeys.csproj" />
   <Project Path="today.comes.saintsfield.Editor.DOTweenDetectPanel.csproj" />
   <Project Path="Unity.InputSystem.DocCodeSamples.csproj" />
   <Project Path="Unity.ProBuilder.Stl.csproj" />
+  <Project Path="UnityUtils.Editor.csproj" />
   <Project Path="Unity.VisualScripting.DocCodeExamples.csproj" />
   <Project Path="today.comes.saintsfield.Editor.AiNavigation.csproj" />
   <Project Path="Unity.PlasticSCM.Editor.Entities.csproj" />
