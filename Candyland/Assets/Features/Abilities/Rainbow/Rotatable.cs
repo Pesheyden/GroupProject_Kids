@@ -21,6 +21,8 @@ public class Rotatable : MonoBehaviour, IInteractable
     private float _pitch;
     private float _yaw;
     private bool _active;
+
+    private CinemachineCamera _playerCamera;
     
     private void Start()
     {
@@ -34,6 +36,8 @@ public class Rotatable : MonoBehaviour, IInteractable
         _active = true;
         _camera.enabled = true;
 
+        _playerCamera = playerInput.GetComponent<PlayerMoveControllerRB>().OrbitalFollow.GetComponent<CinemachineCamera>();
+        _playerCamera.Priority = -100;
         _lookAction = playerInput.actions["Look"];
         _lookAction.started += OnLookInput;
         _lookAction.canceled += OnLookInput;
@@ -45,6 +49,7 @@ public class Rotatable : MonoBehaviour, IInteractable
         _camera.enabled = false;
         _lookAction.started -= OnLookInput;
         _lookAction.canceled -= OnLookInput;
+        _playerCamera.Priority = 0;
     }
     
     private void OnLookInput(InputAction.CallbackContext obj)

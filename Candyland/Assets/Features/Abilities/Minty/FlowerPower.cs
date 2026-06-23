@@ -2,33 +2,48 @@ using UnityEngine;
 using System.Collections;
 using BSOAP.Variables;
 using System.Collections.Generic;
+using UnityEngine.InputSystem;
+using System.Net.NetworkInformation;
+using System;
 
-public class FlowerPower : MonoBehaviour
+
+[Serializable]
+public class FlowerSection
 {
-    [SerializeField] private List<Transform> flowerLeaves = new List<Transform>();
-    [SerializeField] private List<Transform> flowerStems = new List<Transform>();
-    [SerializeField] private List<Transform> flowerPetals = new List<Transform>();
+    public List<Transform> flowerStems = new List<Transform>();
+    public List<Transform> flowerLeaves = new List<Transform>();
+    public List<Transform> flowerPetals = new List<Transform>();
+}
+public class FlowerPower : MonoBehaviour, IInteractable
+{
+    [SerializeField] private List<FlowerSection> flowerSections;
+    [SerializeField] private float _stemGrowTime;
+    [SerializeField] private float _leaveGrowTime;
+    [SerializeField] private float _petalsGrowTime;
 
-    [SerializeField] private FloatVariable growSpeed;
+    private bool isGrowing = false;
+    private bool isGrown = false;
 
     void Start()
     {
-        foreach (var stem in flowerStems)
+        foreach(var section in flowerSections)
         {
-            stem.localScale = new Vector3(1, 0, 1);
-        }
+            foreach (var stem in section.flowerStems)
+            {
+                stem.localScale = new Vector3(1, 0, 1);
+                stem.gameObject.SetActive(false);
+            }
 
-        foreach (var leaf in flowerLeaves)
-        {
-            leaf.localScale = Vector3.zero;
-        }
+            foreach (var leaf in section.flowerLeaves)
+            {
+                leaf.localScale = Vector3.zero;
+            }
 
-        foreach (var petal in flowerPetals)
-        {
-            petal.localScale = Vector3.zero;
+            foreach (var petal in section.flowerPetals)
+            {
+                petal.localScale = Vector3.zero;
+            }
         }
-        
-        //StartCoroutine(GrowFlower());
     }
 
     IEnumerator GrowPart(Transform part, float duration)
@@ -40,7 +55,7 @@ public class FlowerPower : MonoBehaviour
 
         while(timer < duration)
         {
-            timer += Time.deltaTime * growSpeed.Value;
+            timer += Time.deltaTime;
 
             float time = timer/duration;
 
@@ -59,9 +74,11 @@ public class FlowerPower : MonoBehaviour
 
         float timer = 0f;
 
-        while(timer < duration)
+        stem.gameObject.SetActive(true);
+
+        while (timer < duration)
         {
-            timer += Time.deltaTime * growSpeed.Value;
+            timer += Time.deltaTime;
 
             float time = timer/duration;
 
@@ -82,7 +99,7 @@ public class FlowerPower : MonoBehaviour
 
         while(timer < duration)
         {
-            timer += Time.deltaTime * growSpeed.Value;
+            timer += Time.deltaTime;
 
             float time = timer/duration;
 
@@ -101,9 +118,9 @@ public class FlowerPower : MonoBehaviour
 
         float timer = 0f;
 
-        while(timer < duration)
+        while (timer < duration)
         {
-            timer += Time.deltaTime * growSpeed.Value;
+            timer += Time.deltaTime;
 
             float time = timer/duration;
 
@@ -113,67 +130,123 @@ public class FlowerPower : MonoBehaviour
             yield return null;
         }
 
-        stem.localScale = endScale;   
+        stem.localScale = endScale;
+        stem.gameObject.SetActive(false);
     }
 
     public IEnumerator GrowFlower()
     {
-        if(flowerStems != null)
-        {         
-            for (int i = 0; i < flowerStems.Count; i++)
+        isGrowing = true;
+        isGrown = true;
+
+
+        foreach(var section in flowerSections)
+        {
+            var flowerStems = section.flowerStems;
+            var flowerLeaves = section.flowerLeaves;
+            var flowerPetals = section.flowerPetals;
+
+            if (flowerStems != null)
             {
-                StartCoroutine(GrowStem(flowerStems[i], 3f));
+                for (int i = 0; i < flowerStems.Count; i++)
+                {
+                    StartCoroutine(GrowStem(flowerStems[i], _stemGrowTime));
+                    yield return new WaitForSeconds(_stemGrowTime);
+                }
+
             }
-        }
-        
-        if(flowerLeaves != null)
-        {           
-            yield return new WaitForSeconds(0.6f);
-            for (int i = 0; i < flowerLeaves.Count; i++)
+
+            if (flowerLeaves != null)
             {
-                StartCoroutine(GrowPart(flowerLeaves[i], 1.2f));
+                for (int i = 0; i < flowerLeaves.Count; i++)
+                {
+                    StartCoroutine(GrowPart(flowerLeaves[i], _leaveGrowTime));
+                    yield return new WaitForSeconds(_leaveGrowTime);
+                }
+
             }
+
+            if (flowerPetals != null)
+            {
+                for (int i = 0; i < flowerPetals.Count; i++)
+                {
+                    StartCoroutine(GrowPart(flowerPetals[i], _petalsGrowTime));
+                    yield return new WaitForSeconds(_petalsGrowTime);
+                }
+            }
+
         }
 
-        if(flowerPetals != null)
-        {           
-            yield return new WaitForSeconds(0.3f);
-            for (int i = 0; i < flowerPetals.Count; i++)
-            {
-                StartCoroutine(GrowPart(flowerPetals[i], 1.7f));
-            }
-        }
+        isGrowing = false;
     }
 
     public IEnumerator ShrinkFlower()
     {
-        if(flowerPetals != null)
-        {           
-            for (int i = 0; i < flowerPetals.Count; i++)
-            {
-                StartCoroutine(ShrinkPart(flowerPetals[i], 1.7f));
-            }
-        }
-        
-        if(flowerLeaves != null)
-        {            
-            yield return new WaitForSeconds(0.3f);
-            for (int i = 0; i < flowerLeaves.Count; i++)
-            {
-                StartCoroutine(ShrinkPart(flowerLeaves[i], 1.2f));
-            }
-        }
+        isGrowing = true;
 
-        if(flowerStems != null)
-        {           
-            yield return new WaitForSeconds(0.6f);
-            for (int i = 0; i < flowerStems.Count; i++)
+        for (int j = flowerSections.Count - 1; j >= 0; j--)
+        {
+            FlowerSection section = flowerSections[j];
+            var flowerStems = section.flowerStems;
+            var flowerLeaves = section.flowerLeaves;
+            var flowerPetals = section.flowerPetals;
+
+            if (flowerPetals != null)
             {
-                StartCoroutine(ShrinkStem(flowerStems[i], 3f));
+                for (int i = flowerPetals.Count - 1; i >= 0; i--)
+                {
+                    StartCoroutine(ShrinkPart(flowerPetals[i], _petalsGrowTime));
+                    yield return new WaitForSeconds(_petalsGrowTime);
+                }
+
             }
+
+            if (flowerLeaves != null)
+            {
+                for (int i = flowerLeaves.Count - 1; i >= 0; i--)
+                {
+                    StartCoroutine(ShrinkPart(flowerLeaves[i], _leaveGrowTime));
+                    yield return new WaitForSeconds(_leaveGrowTime);
+                }
+
+            }
+
+            if (flowerStems != null)
+            {
+                for (int i = flowerStems.Count - 1; i >= 0; i--)
+                {
+                    StartCoroutine(ShrinkStem(flowerStems[i], _stemGrowTime));
+                    yield return new WaitForSeconds(_stemGrowTime);
+                }
+
+            }
+
+        }
+        isGrowing = false;
+        isGrown = false;
+    }
+
+    public void Started(PlayerInput playerInput)
+    {
+        Debug.Log("Flower Power Started");
+        if (isGrowing)
+            return;
+
+        if (!isGrown)
+        {
+            StartCoroutine(GrowFlower());
+        }
+        else
+        {
+            StartCoroutine(ShrinkFlower());
         }
     }
-    
+
+    public void Canceled(PlayerInput playerInput)
+    {
+
+    }
+
 
     /*void OnTriggerEnter(Collider other)
     {
