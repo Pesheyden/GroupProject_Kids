@@ -105,7 +105,7 @@ Material:
     - _OutlineThickness: 0.01
     - _Parallax: 0.005
     - _PulseAmount: 0.005
-    - _PulseSpeed: 7
+    - _PulseSpeed: 4
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
