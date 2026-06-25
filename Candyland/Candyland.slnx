@@ -8,6 +8,7 @@
   <Project Path="Unity.Cinemachine.Editor.csproj" />
   <Project Path="Unity.Timeline.Editor.csproj" />
   <Project Path="Unity.Collections.csproj" />
+  <Project Path="Unity.TerrainTools.Editor.csproj" />
   <Project Path="Unity.ProBuilder.Poly2Tri.csproj" />
   <Project Path="NaughtyAttributes.Core.csproj" />
   <Project Path="Unity.VisualScripting.Core.Editor.csproj" />
@@ -16,6 +17,7 @@
   <Project Path="UnityUtils.csproj" />
   <Project Path="Unity.Burst.csproj" />
   <Project Path="Unity.VisualScripting.Flow.Editor.csproj" />
+  <Project Path="Adobe.Substance.csproj" />
   <Project Path="Unity.ProBuilder.Csg.csproj" />
   <Project Path="Unity.VisualStudio.Editor.csproj" />
   <Project Path="Unity.InputSystem.csproj" />
@@ -34,10 +36,12 @@
   <Project Path="Assembly-CSharp.csproj" />
   <Project Path="Assembly-CSharp-Editor.csproj" />
   <Project Path="Unity.Burst.Editor.csproj" />
+  <Project Path="Adobe.Substance.Runtime.csproj" />
   <Project Path="Unity.Rider.Editor.csproj" />
   <Project Path="Unity.VisualScripting.State.csproj" />
   <Project Path="Unity.AI.Navigation.Updater.csproj" />
   <Project Path="ImprovedTimers.csproj" />
+  <Project Path="Adobe.SubstanceEditor.csproj" />
   <Project Path="Unity.AI.Navigation.Editor.csproj" />
   <Project Path="Unity.ProBuilder.KdTree.csproj" />
   <Project Path="Unity.ProBuilder.AddOns.Editor.csproj" />
@@ -52,8 +56,11 @@
   <Project Path="Unity.VisualScripting.Shared.Editor.csproj" />
   <Project Path="Unity.CollabProxy.Editor.csproj" />
   <Project Path="UnityUtils.Hotkeys.csproj" />
+  <Project Path="Unity.TerrainTools.csproj" />
   <Project Path="today.comes.saintsfield.Editor.DOTweenDetectPanel.csproj" />
+  <Project Path="Adobe.Substance.Connector.Unity.csproj" />
   <Project Path="Unity.InputSystem.DocCodeSamples.csproj" />
+  <Project Path="Adobe.Substance.Connector.csproj" />
   <Project Path="Unity.ProBuilder.Stl.csproj" />
   <Project Path="UnityUtils.Editor.csproj" />
   <Project Path="Unity.VisualScripting.DocCodeExamples.csproj" />
