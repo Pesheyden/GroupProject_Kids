@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5705523123472597125}
   - component: {fileID: 6191022062435199917}
   - component: {fileID: 1380238244278658327}
+  - component: {fileID: 3049108372894682560}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -170,6 +171,20 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   CustomBlends: {fileID: 0}
+--- !u!114 &3049108372894682560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 265089886179795156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioListener
+  nonRigidbodyVelocity: 0
+  attenuationObject: {fileID: 0}
 --- !u!1 &3250395856398489015
 GameObject:
   m_ObjectHideFlags: 0
@@ -611,15 +626,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4083a69e2eb0c04fbb2780f74d8ea2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMoveControllerRB
+  _currentMonster: 0
   _moveSpeed: 6
   _crouchSpeed: 3
   _rotationSpeed: 30
+  _slopeLimit: 15
+  _airSpeedMultiplier: 0
   _jumpForce: 5
   _groundCheckDistance: 0.2
+  _groundSphereRadius: 0.2
   _standingHeight: 2
   _crouchingHeight: 1
   _crouchTransitionSpeed: 10
-  _orbitalFollow: {fileID: 5240280446820541326}
+  _swimSpeed: 4
+  _swimUpAcceleration: 8
+  _swimDownAcceleration: 3
+  _maxSwimUpSpeed: 3
+  _maxSwimDownSpeed: -2
+  _swimDrag: 3
+  _waterExitDelay: 0.5
+  _waterSimulation: {fileID: 0}
+  _waterCheckEveryFrames: 10
+  _waterTouchExtraRadius: 0.35
+  OrbitalFollow: {fileID: 0}
+  _normalCam: {fileID: 0}
+  _underwaterCam: {fileID: 0}
   _playerItems: {fileID: 8485766790433064966}
 --- !u!114 &3462488800052578108
 MonoBehaviour:
@@ -636,6 +667,8 @@ MonoBehaviour:
   orbital: {fileID: 5240280446820541326}
   _verticalSensitivity: 10
   _horizontalSensitivity: 50
+  _freeCamera: {fileID: 0}
+  _masterControllerTool: {fileID: 0}
 --- !u!114 &6402342829801533673
 MonoBehaviour:
   m_ObjectHideFlags: 0

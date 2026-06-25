@@ -11,7 +11,7 @@ using UnityUtils;
 public class PlayerMoveControllerRB : MonoBehaviour
 {
     public enum MonsterSelector{Minty, Rainbow, Marsh, Prul}
-    [SerializeField] private MonsterSelector _currentMonster;
+    public MonsterSelector _currentMonster;
 
     [Header("Movement")]
     [SerializeField] private float _moveSpeed = 6f;
