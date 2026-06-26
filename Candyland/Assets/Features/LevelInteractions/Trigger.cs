@@ -6,6 +6,7 @@ using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
 
+
 public class Trigger : MonoBehaviour
 {
     [Foldout("Events")] [Tooltip("Triggers when all conditions are fulfilled")]

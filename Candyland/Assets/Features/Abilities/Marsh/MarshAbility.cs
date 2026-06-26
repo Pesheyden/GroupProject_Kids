@@ -9,7 +9,8 @@ public class MarshAbility : MonoBehaviour
     [SerializeField] private bool _debug;
     [SerializeField] private Transform _pivot;
     [SerializeField] private Transform _projectile;
-    [SerializeField] private Transform _platform;
+    [SerializeField] private BouncyPlatform _platform;
+    [SerializeField] private float _basicJumpForce;
     [SerializeField] private float _duration;
     [SerializeField] private LayerMask _targetLayers;
     [SerializeField] private float _radius;
@@ -25,6 +26,7 @@ public class MarshAbility : MonoBehaviour
         if (targets.Length > 0)
         {
             _targetPosition = targets[0].transform.position;
+            _platform.Force = targets[0].GetComponent<MarshTarget>().JumpForce;
         }
         else
         {
@@ -34,9 +36,11 @@ public class MarshAbility : MonoBehaviour
             }
 
             _targetPosition = hit.point;
+            _platform.Force = _basicJumpForce;
         }
         
         _platform.gameObject.SetActive(false);
+
         _projectileFlying = true;
         _projectile.gameObject.SetActive(true);
         StartCoroutine(CurveMoveCoroutine(_pivot.position, _targetPosition));
@@ -66,8 +70,7 @@ public class MarshAbility : MonoBehaviour
         _projectileFlying = false;
         _projectile.gameObject.SetActive(false);
         
-        _platform.position = position;
-        
+        _platform.transform.position = position;
         _platform.gameObject.SetActive(true);
     }
 

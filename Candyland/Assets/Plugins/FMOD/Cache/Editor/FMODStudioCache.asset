@@ -1,32 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-5519636318809698257
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/New Event
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/New Event
-  Guid:
-    Data1: 1072744445
-    Data2: 1104232136
-    Data3: -576608614
-    Data4: -1420653325
-  Banks:
-  - {fileID: 7416632128786598921}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43,17 +16,45 @@ MonoBehaviour:
   - {fileID: 5716768352904858761}
   - {fileID: 7416632128786598921}
   EditorEvents:
-  - {fileID: -5519636318809698257}
+  - {fileID: 8020687741021709931}
+  - {fileID: 1578918675455721273}
   EditorParameters: []
   MasterBanks:
   - {fileID: 7416632128786598921}
   StringsBanks:
   - {fileID: 5716768352904858761}
   cacheVersion: 131860
-  cacheTime: 639179802692662720
+  cacheTime: 639179950162154789
   SerializableEventsDict:
-  - key: event:/New Event
+  - key: event:/BackgroundMusic
     index: 0
+--- !u!114 &1578918675455721273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/checkpoint
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/checkpoint
+  Guid:
+    Data1: 1785745159
+    Data2: 1320717733
+    Data3: 118046614
+    Data4: -158782138
+  Banks:
+  - {fileID: 7416632128786598921}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 4022
 --- !u!114 &5716768352904858761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,10 +70,10 @@ MonoBehaviour:
   Path: FMOD/audioProject/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639179802692662720
+  lastModified: 639179950162154789
   FileSizes:
   - Name: Desktop
-    Value: 770
+    Value: 1004
   Exists: 1
 --- !u!114 &7416632128786598921
 MonoBehaviour:
@@ -89,8 +90,35 @@ MonoBehaviour:
   Path: FMOD/audioProject/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639179802692499226
+  lastModified: 639179950162154789
   FileSizes:
   - Name: Desktop
-    Value: 1612
+    Value: 51072
   Exists: 1
+--- !u!114 &8020687741021709931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/BackgroundMusic
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/BackgroundMusic
+  Guid:
+    Data1: 1072744445
+    Data2: 1104232136
+    Data3: -576608614
+    Data4: -1420653325
+  Banks:
+  - {fileID: 7416632128786598921}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0

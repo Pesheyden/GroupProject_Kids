@@ -1,15 +1,16 @@
 using System;
 using BSOAP.Variables;
+using NaughtyAttributes;
 using UnityEngine;
 
 public class BouncyPlatform : MonoBehaviour
 {
-    [SerializeField] private float _force;
+    public float Force;
     private void OnTriggerEnter(Collider other)
     {
         if(!other.TryGetComponent<Rigidbody>(out var rb))
             return;
         
-        rb.AddForce(transform.up * _force, ForceMode.Impulse);
+        rb.AddForce(transform.up * Force, ForceMode.Impulse);
     }
 }
