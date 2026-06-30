@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{ffdae8a7-08bd-4371-be61-22aa0bc8dbd8}">
+		<property name="assetPath">
+			<value>shootingstarr.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>8.0979591836734688</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{c5563c48-b874-465e-8756-1ea46fcb305c}</destination>
+		</relationship>
+	</object>
+</objects>

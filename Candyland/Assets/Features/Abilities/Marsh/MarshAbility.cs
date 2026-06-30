@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using NaughtyAttributes;
 using UnityEngine;
+using FMODUnity;
 
 public class MarshAbility : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class MarshAbility : MonoBehaviour
     [SerializeField] private float _radius;
     [SerializeField] private float _shootDistance;
     [SerializeField] private Animator animator;
+    [SerializeField] private EventReference special;
 
     private bool _projectileFlying;
     
@@ -46,6 +48,7 @@ public class MarshAbility : MonoBehaviour
         _projectile.gameObject.SetActive(true);
         StartCoroutine(CurveMoveCoroutine(_pivot.position, _targetPosition));
         animator.SetTrigger("Special");
+        RuntimeManager.PlayOneShot(special, transform.position);        
     }
 
     private IEnumerator CurveMoveCoroutine(Vector3 start, Vector3 end)

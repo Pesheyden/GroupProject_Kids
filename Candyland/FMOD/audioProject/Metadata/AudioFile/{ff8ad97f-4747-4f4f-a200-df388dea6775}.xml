@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{ff8ad97f-4747-4f4f-a200-df388dea6775}">
+		<property name="assetPath">
+			<value>jumpingtrampoline.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>24</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.776</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{c5563c48-b874-465e-8756-1ea46fcb305c}</destination>
+		</relationship>
+	</object>
+</objects>

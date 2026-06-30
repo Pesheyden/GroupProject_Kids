@@ -2,6 +2,7 @@ using System;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using FMODUnity;
 
 [RequireComponent(typeof(PlayerInput))]
 public class Interactor : MonoBehaviour
@@ -11,6 +12,7 @@ public class Interactor : MonoBehaviour
         [SerializeField] private float _interactionRadius;
         [SerializeField] private LayerMask _interactionLayer;
         [Tag] [SerializeField] private string[] _includedTags;
+        [SerializeField] private EventReference special;
 
         private PlayerInput _playerInput;
         private InputAction _interact;
@@ -26,7 +28,6 @@ public class Interactor : MonoBehaviour
 
         private void OnInteractStarted(InputAction.CallbackContext ctx)
         {
-                animator.SetTrigger("Special");
                 var interactions = Physics.OverlapSphere(transform.position, _interactionRadius, _interactionLayer);
                 if (interactions.Length == 0)
                         return;
@@ -42,6 +43,8 @@ public class Interactor : MonoBehaviour
                         {
                                 Debug.Log("StartInteraction with " + lastInteractable);
                                 lastInteractable.Started(_playerInput);
+                                animator.SetTrigger("Special");
+                                RuntimeManager.PlayOneShot(special, transform.position);        
                         }
                 }
         }

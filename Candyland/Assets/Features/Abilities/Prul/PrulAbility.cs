@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
+using FMODUnity;
 
 public class PrulAbility : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class PrulAbility : MonoBehaviour
         [SerializeField] private Transform _pivot;
         [SerializeField] private Transform _starsParent;
         [SerializeField] private Animator animator;
+        [SerializeField] private EventReference special;
 
         [Header("Star")] 
         [SerializeField] private GameObject _starPrefab;
@@ -29,6 +31,7 @@ public class PrulAbility : MonoBehaviour
         {
                 _starPool.Get().Activate();
                 animator.SetTrigger("Special");
+        RuntimeManager.PlayOneShot(special, transform.position);        
         }
         
         //Pool callbacks

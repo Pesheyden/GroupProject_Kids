@@ -1,4 +1,5 @@
 using System;
+using FMODUnity;
 using ImprovedTimers;
 using Seb.Fluid.Simulation;
 using Unity.Cinemachine;
@@ -55,6 +56,10 @@ public class PlayerMoveControllerRB : MonoBehaviour
 
     [Header("Animations")]
     [SerializeField] private Animator animator;
+
+    [Header("Sounds")]
+    [SerializeField] private GameObject walking;
+    [SerializeField] private EventReference jumping;
 
     [Header("References")]
     public CinemachineOrbitalFollow OrbitalFollow;
@@ -167,6 +172,7 @@ public class PlayerMoveControllerRB : MonoBehaviour
                 break;
         }
         UpdateAnimations();
+        UpdateSounds();
     }
     
     
@@ -313,6 +319,7 @@ public class PlayerMoveControllerRB : MonoBehaviour
         {
             _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
             animator.SetTrigger("Jump");
+            RuntimeManager.PlayOneShot(jumping, transform.position);        
         }
     }
 
@@ -362,6 +369,13 @@ public class PlayerMoveControllerRB : MonoBehaviour
 
         animator.SetBool("IsMoving", moving);
         animator.SetBool("IsGrounded", grounded);
-        Debug.Log("Moving: " + moving + " Grounded: " + grounded + " MoveInput: " + _moveInput);
+    }
+
+    private void UpdateSounds()
+    {
+        bool moving = _moveInput.magnitude > 0.1f;
+        bool grounded = IsGrounded();
+
+        walking.SetActive(moving && grounded);
     }
 }
