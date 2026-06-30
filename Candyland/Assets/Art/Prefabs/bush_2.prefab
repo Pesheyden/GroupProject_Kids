@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6587994908502223766}
   - component: {fileID: 4651983639868625628}
   - component: {fileID: 1298121022241768508}
+  - component: {fileID: 5174167482304860487}
   m_Layer: 0
   m_Name: bush_2
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 32.596558, y: 0.7210717, z: 118.3016}
   m_LocalScale: {x: 0.024999999, y: 0.024999999, z: 0.024999999}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -90,3 +91,30 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!205 &5174167482304860487
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4504231998963052644}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0.000030517578, y: -1.9685879, z: 0}
+  m_Size: 140.56677
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.6
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 1298121022241768508}
+  - screenRelativeHeight: 0.3
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 1298121022241768508}
+  - screenRelativeHeight: 0
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 1298121022241768508}
+  m_Enabled: 1
