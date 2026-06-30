@@ -90,13 +90,16 @@
 	<object class="MixerBusPanner" id="{8bfd67b8-18a9-4ec5-a8f8-d3b2b6cbb9f2}" />
 	<object class="SingleSound" id="{469da3d6-d0cf-4d4f-b320-984c9876aa64}">
 		<property name="length">
-			<value>8.0979591836734688</value>
+			<value>2.75</value>
 		</property>
 		<relationship name="audioFile">
 			<destination>{ffdae8a7-08bd-4371-be61-22aa0bc8dbd8}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{1c02040c-eeb5-4883-ae49-ff51d47584bb}">
+		<property name="volume">
+			<value>-27</value>
+		</property>
 		<property name="name">
 			<value>Audio 1</value>
 		</property>
@@ -114,6 +117,7 @@
 		<relationship name="effects">
 			<destination>{50e60357-6543-49a3-a985-66f270a4a386}</destination>
 			<destination>{81070118-818b-49ef-bd55-180ead254dce}</destination>
+			<destination>{3e3d9ac3-610b-4e12-9bf2-fa5a6d5d2e44}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{c544c814-7b9c-459a-a094-c2e540841000}" />
@@ -126,5 +130,10 @@
 	<object class="MixerBusPanner" id="{15d4060d-6689-483b-9d91-76d6f0f29639}" />
 	<object class="MixerBusFader" id="{50e60357-6543-49a3-a985-66f270a4a386}" />
 	<object class="SpatialiserEffect" id="{81070118-818b-49ef-bd55-180ead254dce}" />
+	<object class="PitchShifterEffect" id="{3e3d9ac3-610b-4e12-9bf2-fa5a6d5d2e44}">
+		<property name="pitch">
+			<value>1.65999997</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{0f5fb433-db2a-4a0e-9138-d1fa4f2a5c67}" />
 </objects>

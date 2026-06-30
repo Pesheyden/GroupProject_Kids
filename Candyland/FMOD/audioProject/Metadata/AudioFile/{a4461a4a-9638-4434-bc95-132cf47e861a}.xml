@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{a4461a4a-9638-4434-bc95-132cf47e861a}">
+		<property name="assetPath">
+			<value>wind3.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>5.016</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{c5563c48-b874-465e-8756-1ea46fcb305c}</destination>
+		</relationship>
+	</object>
+</objects>

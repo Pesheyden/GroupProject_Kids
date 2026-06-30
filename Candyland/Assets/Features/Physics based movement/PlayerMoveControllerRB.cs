@@ -25,6 +25,7 @@ public class PlayerMoveControllerRB : MonoBehaviour
     [Header("Jumping")]
     [SerializeField] private float _jumpForce = 5f;
     [SerializeField] private float _groundCheckDistance = 0.2f;
+    [SerializeField] private float _landingCheckDistance = 0.2f;
     [SerializeField] private float _groundSphereRadius = 0.2f;
     [SerializeField] private float _fallSpeed = 1f;
 
@@ -87,6 +88,7 @@ public class PlayerMoveControllerRB : MonoBehaviour
     private void Start()
     {
         _playerItems.transform.position +=  new Vector3(0, _capsule.height/ 2, 0);
+        _standingHeight = _capsule.height;
 
         if (_currentMonster == MonsterSelector.Prul && _waterSimulation != null)
         {
@@ -319,7 +321,6 @@ public class PlayerMoveControllerRB : MonoBehaviour
     public void OnMove(InputValue value)
     {
         _moveInput = value.Get<Vector2>();
-        Debug.Log("Move callback");
     }
 
     public void OnJump(InputValue value)
@@ -372,12 +373,15 @@ public class PlayerMoveControllerRB : MonoBehaviour
 
     private void UpdateAnimations()
     {
-        bool grounded = IsGrounded();
-        //bool moving = _moveInput != Vector2.zero;
-        bool moving = _moveInput.magnitude > 0.1f;
-
-        animator.SetBool("IsMoving", moving);
-        animator.SetBool("IsGrounded", grounded);
+        animator.SetBool("IsMoving", _moveInput.magnitude > 0.1f);
+        animator.SetBool("IsGrounded", IsGrounded());
+        
+        
+        Vector3 origin = transform.position + Vector3.up * (_groundSphereRadius + 0.1f);
+        Ray ray = new Ray(origin, Vector3.down); 
+        animator.SetBool("IsLanding", 
+            Physics.SphereCast(ray, _groundSphereRadius, out _hitInfo, _landingCheckDistance + (_groundSphereRadius + 0.1f)) &&
+            _rb.linearVelocity.y <= 0.2f); 
     }
 
     private void UpdateSounds()

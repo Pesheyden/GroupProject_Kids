@@ -383,8 +383,8 @@ MonoBehaviour:
   sourceProjectPath: FMOD/audioProject/audioProject.fspro
   sourceBankPath: FMOD/audioProject/Build
   sourceBankPathUnformatted: 
-  BankRefreshCooldown: 5
-  ShowBankRefreshWindow: 1
+  BankRefreshCooldown: 1
+  ShowBankRefreshWindow: 0
   AutomaticEventLoading: 1
   BankLoadType: 0
   AutomaticSampleLoading: 0
@@ -418,7 +418,7 @@ MonoBehaviour:
   SharedLibraryUpdateStage: 0
   SharedLibraryTimeSinceStart: 0
   CurrentVersion: 131860
-  HideSetupWizard: 0
+  HideSetupWizard: 1
   LastEventReferenceScanVersion: 131860
   Platforms:
   - {fileID: -9120671026560784523}
