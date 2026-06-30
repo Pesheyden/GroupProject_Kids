@@ -14,7 +14,8 @@ public class PlayerMoveControllerRB : MonoBehaviour
     public enum MonsterSelector{Minty, Rainbow, Marsh, Prul}
     public MonsterSelector _currentMonster;
 
-    [Header("Movement")]
+    [Header("Movement")] 
+    [SerializeField] private bool _alignWithView = true;
     [SerializeField] private float _moveSpeed = 6f;
     [SerializeField] private float _crouchSpeed = 3f;
     [SerializeField] private float _rotationSpeed = 30f;
@@ -25,6 +26,7 @@ public class PlayerMoveControllerRB : MonoBehaviour
     [SerializeField] private float _jumpForce = 5f;
     [SerializeField] private float _groundCheckDistance = 0.2f;
     [SerializeField] private float _groundSphereRadius = 0.2f;
+    [SerializeField] private float _fallSpeed = 1f;
 
     [Header("Crouching")]
     [SerializeField] private float _standingHeight = 2f;
@@ -138,19 +140,19 @@ public class PlayerMoveControllerRB : MonoBehaviour
         switch(_currentMonster)
         {
             case MonsterSelector.Marsh:
-                if(_moveInput != Vector2.zero)
+                if(_alignWithView && _moveInput != Vector2.zero)
                     UpdateRotation();
                 Move();
                 SmoothCrouch();
                 break;
             case MonsterSelector.Minty:
-                if(_moveInput != Vector2.zero)
+                if(_alignWithView && _moveInput != Vector2.zero)
                     UpdateRotation();
                 Move();
                 SmoothCrouch();
                 break;
             case MonsterSelector.Rainbow:
-                if(_moveInput != Vector2.zero)
+                if(_alignWithView && _moveInput != Vector2.zero)
                     UpdateRotation();
                 Move();
                 SmoothCrouch();
@@ -170,6 +172,8 @@ public class PlayerMoveControllerRB : MonoBehaviour
                     SmoothCrouch();
                 }
                 break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
         UpdateAnimations();
         UpdateSounds();
@@ -212,6 +216,9 @@ public class PlayerMoveControllerRB : MonoBehaviour
         if (!IsGrounded()) velocityChange *= _airSpeedMultiplier;
         
         _rb.AddForce(velocityChange, ForceMode.VelocityChange);
+        
+        if(IsFalling())
+            _rb.AddForce(Vector3.down * _fallSpeed, ForceMode.Force);
     }
 
     private void SmoothCrouch()
@@ -305,6 +312,8 @@ public class PlayerMoveControllerRB : MonoBehaviour
         Ray ray = new Ray(origin, Vector3.down);
         return Physics.SphereCast(ray, _groundSphereRadius, out _hitInfo, _groundCheckDistance + (_groundSphereRadius + 0.1f));
     }
+
+    private bool IsFalling() => !IsGrounded() && _rb.linearVelocity.y <= 0;
 
     // Input System Callbacks
     public void OnMove(InputValue value)
