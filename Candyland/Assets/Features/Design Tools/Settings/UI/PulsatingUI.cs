@@ -8,8 +8,8 @@ public class PulsatingUI : MonoBehaviour
     [SerializeField] private Image uiImage;
     [SerializeField] private Sprite _unlitImage;
     [SerializeField] private Sprite _litImage;
-    [SerializeField] private Animation _litAnimation;
     private bool isPulsating;
+    private Coroutine pulsateCoroutine;
 
     void Awake()
     {
@@ -18,23 +18,28 @@ public class PulsatingUI : MonoBehaviour
 
     public void StartPulsating()
     {
-        if(isPulsating) return;
+        if (isPulsating) return;
 
         isPulsating = true;
-        ImageChange();
+        StartCoroutine(Pulsate());
+    }
+    private IEnumerator Pulsate()
+    {
+        while (isPulsating)
+        {
+            uiImage.sprite = _litImage;
+            yield return new WaitForSeconds(_pulseSpeed);
+            uiImage.sprite = _unlitImage;
+            yield return new WaitForSeconds(_pulseSpeed);
+        }
     }
 
     public void StopPulsating()
     {
-        if(!isPulsating) return;
+        if (!isPulsating) return;
 
         isPulsating = false;
         uiImage.sprite = _unlitImage;
     }
 
-    void ImageChange()
-    {         
-        uiImage.sprite = _litImage;
-        _litAnimation.Play();
-    }
 }
