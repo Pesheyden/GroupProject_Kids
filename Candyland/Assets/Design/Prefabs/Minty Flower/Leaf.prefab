@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5414319354899018324}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Leaf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 597599144268888822}
   - component: {fileID: 5381805474441065386}
   - component: {fileID: 8223141583819857356}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FK_leaf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
