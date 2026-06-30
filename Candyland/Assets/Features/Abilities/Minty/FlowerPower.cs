@@ -20,6 +20,7 @@ public class FlowerPower : MonoBehaviour, IInteractable
     [SerializeField] private float _stemGrowTime;
     [SerializeField] private float _leaveGrowTime;
     [SerializeField] private float _petalsGrowTime;
+    //[SerializeField] private Animator animator;
 
     private bool isGrowing = false;
     private bool isGrown = false;
@@ -174,7 +175,6 @@ public class FlowerPower : MonoBehaviour, IInteractable
                     yield return new WaitForSeconds(_petalsGrowTime);
                 }
             }
-
         }
 
         isGrowing = false;
@@ -235,6 +235,7 @@ public class FlowerPower : MonoBehaviour, IInteractable
         if (!isGrown)
         {
             StartCoroutine(GrowFlower());
+            //animator.SetTrigger("Special");
         }
         else
         {

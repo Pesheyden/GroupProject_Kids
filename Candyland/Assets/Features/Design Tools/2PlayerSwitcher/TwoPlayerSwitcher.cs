@@ -45,9 +45,6 @@ public class TwoPlayerSwitcher : MonoBehaviour
 
         if (Gamepad.all.Count > 1)
             playerTwoGamepad = Gamepad.all[1];
-
-        /*SpawnPlayerOne(playerOneIndex, playerOneStart.position, playerOneStart.rotation);
-        SpawnPlayerTwo(playerTwoIndex, playerTwoStart.position, playerTwoStart.rotation);*/
     }
 
     private void Update()
@@ -66,18 +63,6 @@ public class TwoPlayerSwitcher : MonoBehaviour
                 CloseRadialMenuFirst();
                 moveControllerFirst.enabled = true;
             }
-
-            /*if (playerOneGamepad.dpad.right.wasPressedThisFrame)
-            {
-                SwitchPlayerOne(1);
-                CloseRadialMenu();               
-            }
-
-            if (playerOneGamepad.dpad.left.wasPressedThisFrame)
-            {
-                SwitchPlayerOne(-1);
-                CloseRadialMenu();               
-            }*/
         }
 
         if (playerTwoGamepad != null)
@@ -95,60 +80,8 @@ public class TwoPlayerSwitcher : MonoBehaviour
                 moveControllerSecond.enabled = true;
 
             }
-            /*if (playerTwoGamepad.dpad.right.wasPressedThisFrame)
-            {
-                SwitchPlayerTwo(1);
-                CloseRadialMenu();                
-            }
-
-            if (playerTwoGamepad.dpad.left.wasPressedThisFrame)
-            {
-                SwitchPlayerTwo(-1);
-                CloseRadialMenu();               
-            }*/
         }
     }
-
-    /*private void SwitchPlayerOne(int direction)
-    {
-        Vector3 oldPosition = playerOneCharacter.transform.position;
-        Quaternion oldRotation = playerOneCharacter.transform.rotation;
-
-        playerOneIndex = GetNextAvailableIndex(playerOneIndex, playerTwoIndex, direction);
-
-        Destroy(playerOneCharacter);
-        SpawnPlayerOne(playerOneIndex, oldPosition, oldRotation);
-        CloseRadialMenuFirst();
-    }
-
-    private void SwitchPlayerTwo(int direction)
-    {
-        Vector3 oldPosition = playerTwoCharacter.transform.position;
-        Quaternion oldRotation = playerTwoCharacter.transform.rotation;
-
-        playerTwoIndex = GetNextAvailableIndex(playerTwoIndex, playerOneIndex, direction);
-
-        Destroy(playerTwoCharacter);
-        SpawnPlayerTwo(playerTwoIndex, oldPosition, oldRotation);
-        CloseRadialMenuFirst();
-    }*/
-
-    private int GetNextAvailableIndex(int currentIndex, int blockedIndex)
-    {
-        int nextIndex = currentIndex;
-
-        return nextIndex;
-    }
-
-    /*private void SpawnPlayerOne(int index, Vector3 position, Quaternion rotation)
-    {
-        playerOneCharacter = Instantiate(characterPrefabsFirst[index], position, rotation);
-    }
-
-    private void SpawnPlayerTwo(int index, Vector3 position, Quaternion rotation)
-    {
-        playerTwoCharacter = Instantiate(characterPrefabsFirst[index], position, rotation);
-    }*/
 
     public void OpenRadialMenuFirst()
     {

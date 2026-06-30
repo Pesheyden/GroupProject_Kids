@@ -15,6 +15,7 @@ public class Interactor : MonoBehaviour
         private PlayerInput _playerInput;
         private InputAction _interact;
         private IInteractable[] _lastInteractables = new IInteractable[0];
+        [SerializeField] private Animator animator;
 
 
         private void Awake()
@@ -25,6 +26,7 @@ public class Interactor : MonoBehaviour
 
         private void OnInteractStarted(InputAction.CallbackContext ctx)
         {
+                animator.SetTrigger("Special");
                 var interactions = Physics.OverlapSphere(transform.position, _interactionRadius, _interactionLayer);
                 if (interactions.Length == 0)
                         return;

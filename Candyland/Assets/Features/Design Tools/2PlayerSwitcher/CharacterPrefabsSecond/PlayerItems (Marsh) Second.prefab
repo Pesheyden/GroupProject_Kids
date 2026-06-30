@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2248328940976621806}
   - component: {fileID: 6120862644215636072}
   - component: {fileID: 2991999824489740570}
+  - component: {fileID: 1750088000712684323}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -123,6 +124,7 @@ MonoBehaviour:
   _waterSimulation: {fileID: 0}
   _waterCheckEveryFrames: 10
   _waterTouchExtraRadius: 0.35
+  animator: {fileID: 1750088000712684323}
   OrbitalFollow: {fileID: 5631757416363160690}
   _normalCam: {fileID: 0}
   _underwaterCam: {fileID: 0}
@@ -191,12 +193,14 @@ MonoBehaviour:
   _pivot: {fileID: 1236145312581602015}
   _projectile: {fileID: 8505530123583275805}
   _platform: {fileID: 3137518677192057600}
+  _basicJumpForce: 0
   _duration: 2
   _targetLayers:
     serializedVersion: 2
     m_Bits: 256
   _radius: 15
   _shootDistance: 5
+  animator: {fileID: 1750088000712684323}
 --- !u!114 &2991999824489740570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,6 +215,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RespawnHandler
   _respawnTime: 2
   _spawnPoint: {x: 0, y: 0, z: 0}
+--- !u!95 &1750088000712684323
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459869982290200092}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dc2d3bca4484c2b48b3dfef41c630447, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1140696030924145471
 GameObject:
   m_ObjectHideFlags: 0

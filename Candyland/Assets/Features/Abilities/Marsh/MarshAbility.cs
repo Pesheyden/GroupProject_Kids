@@ -15,6 +15,7 @@ public class MarshAbility : MonoBehaviour
     [SerializeField] private LayerMask _targetLayers;
     [SerializeField] private float _radius;
     [SerializeField] private float _shootDistance;
+    [SerializeField] private Animator animator;
 
     private bool _projectileFlying;
     
@@ -44,6 +45,7 @@ public class MarshAbility : MonoBehaviour
         _projectileFlying = true;
         _projectile.gameObject.SetActive(true);
         StartCoroutine(CurveMoveCoroutine(_pivot.position, _targetPosition));
+        animator.SetTrigger("Special");
     }
 
     private IEnumerator CurveMoveCoroutine(Vector3 start, Vector3 end)

@@ -53,6 +53,9 @@ public class PlayerMoveControllerRB : MonoBehaviour
     private int _waterCheckCounter;
     private bool _isInWaterVolume; 
 
+    [Header("Animations")]
+    [SerializeField] private Animator animator;
+
     [Header("References")]
     public CinemachineOrbitalFollow OrbitalFollow;
     [SerializeField] private CinemachineCamera _normalCam;
@@ -69,6 +72,9 @@ public class PlayerMoveControllerRB : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _capsule = GetComponent<CapsuleCollider>();
+
+        if (animator == null)
+            animator = GetComponentInChildren<Animator>();
     }
 
     private void Start()
@@ -160,6 +166,7 @@ public class PlayerMoveControllerRB : MonoBehaviour
                 }
                 break;
         }
+        UpdateAnimations();
     }
     
     
@@ -297,6 +304,7 @@ public class PlayerMoveControllerRB : MonoBehaviour
     public void OnMove(InputValue value)
     {
         _moveInput = value.Get<Vector2>();
+        Debug.Log("Move callback");
     }
 
     public void OnJump(InputValue value)
@@ -304,6 +312,7 @@ public class PlayerMoveControllerRB : MonoBehaviour
         if (!_isSwimming && value.isPressed && IsGrounded() && !IsGroundTooSteep())
         {
             _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+            animator.SetTrigger("Jump");
         }
     }
 
@@ -343,5 +352,16 @@ public class PlayerMoveControllerRB : MonoBehaviour
         Ray ray = new Ray(origin, Vector3.down);
         Gizmos.color = IsGrounded() ? Color.green : Color.red;
         Gizmos.DrawWireSphere(origin + Vector3.down * _groundCheckDistance, _groundSphereRadius);
+    }
+
+    private void UpdateAnimations()
+    {
+        bool grounded = IsGrounded();
+        //bool moving = _moveInput != Vector2.zero;
+        bool moving = _moveInput.magnitude > 0.1f;
+
+        animator.SetBool("IsMoving", moving);
+        animator.SetBool("IsGrounded", grounded);
+        Debug.Log("Moving: " + moving + " Grounded: " + grounded + " MoveInput: " + _moveInput);
     }
 }

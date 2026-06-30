@@ -13,6 +13,7 @@ public class RainbowStartPoint : MonoBehaviour, IInteractable
     [SerializeField] private Transform _pivot;
     [SerializeField] private MeshFilter _meshFilter;
     [SerializeField] private Sprite _texture;
+    //[SerializeField] private Animator animator;
 
     [Header("Ray")] [SerializeField] private float _rainbowWidth;
     [SerializeField] private float _maxDistance;
@@ -27,6 +28,7 @@ public class RainbowStartPoint : MonoBehaviour, IInteractable
     public void Started(PlayerInput playerInput)
     {
         _active = true;
+        //animator.SetTrigger("Special");
     }
     
     public void Canceled(PlayerInput playerInput)

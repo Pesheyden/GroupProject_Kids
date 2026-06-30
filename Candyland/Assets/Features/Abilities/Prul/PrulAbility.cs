@@ -8,6 +8,7 @@ public class PrulAbility : MonoBehaviour
         [Header("References")] 
         [SerializeField] private Transform _pivot;
         [SerializeField] private Transform _starsParent;
+        [SerializeField] private Animator animator;
 
         [Header("Star")] 
         [SerializeField] private GameObject _starPrefab;
@@ -27,6 +28,7 @@ public class PrulAbility : MonoBehaviour
         private void Activate()
         {
                 _starPool.Get().Activate();
+                animator.SetTrigger("Special");
         }
         
         //Pool callbacks

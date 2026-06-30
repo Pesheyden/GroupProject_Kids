@@ -130,7 +130,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3175675282033332045}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.11881965, y: -0.01268097, z: 0.0015176241, w: 0.99283373}
+  m_LocalRotation: {x: 0.11882692, y: -0.0063416455, z: 0.00075895095, w: 0.9928945}
   m_LocalPosition: {x: 3.356018, y: 4.0600004, z: -3.3306274}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -409,7 +409,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5639460508206546974}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.11881966, y: -0.012680971, z: 0.0015176244, w: 0.99283373}
+  m_LocalRotation: {x: 0.11882695, y: -0.0063416474, z: 0.00075895124, w: 0.9928945}
   m_LocalPosition: {x: 3.356018, y: 4.0600004, z: -3.3306274}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -753,6 +753,7 @@ GameObject:
   - component: {fileID: 9031672876458765418}
   - component: {fileID: 8236385038971044718}
   - component: {fileID: 5422116329728059042}
+  - component: {fileID: 4944454053176545603}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -860,6 +861,7 @@ MonoBehaviour:
   _waterSimulation: {fileID: 0}
   _waterCheckEveryFrames: 10
   _waterTouchExtraRadius: 0.35
+  animator: {fileID: 4944454053176545603}
   OrbitalFollow: {fileID: 4770460815515902511}
   _normalCam: {fileID: 0}
   _underwaterCam: {fileID: 0}
@@ -925,6 +927,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PrulAbility
   _pivot: {fileID: 7171514763037405412}
   _starsParent: {fileID: 8171040083331654964}
+  animator: {fileID: 4944454053176545603}
   _starPrefab: {fileID: 2794504351185785, guid: b6b3f12e3ae7a0848a97a42dbaff7e58, type: 3}
   _shootForce: 10
   _lifeTime: 5
@@ -942,3 +945,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RespawnHandler
   _respawnTime: 2
   _spawnPoint: {x: 0, y: 0, z: 0}
+--- !u!95 &4944454053176545603
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6909240302134064637}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dc2d3bca4484c2b48b3dfef41c630447, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
