@@ -14,7 +14,8 @@ public class PlayerMoveControllerRB : MonoBehaviour
     public enum MonsterSelector{Minty, Rainbow, Marsh, Prul}
     public MonsterSelector _currentMonster;
 
-    [Header("Movement")]
+    [Header("Movement")] 
+    [SerializeField] private bool _alignWithView = true;
     [SerializeField] private float _moveSpeed = 6f;
     [SerializeField] private float _crouchSpeed = 3f;
     [SerializeField] private float _rotationSpeed = 30f;
@@ -24,7 +25,10 @@ public class PlayerMoveControllerRB : MonoBehaviour
     [Header("Jumping")]
     [SerializeField] private float _jumpForce = 5f;
     [SerializeField] private float _groundCheckDistance = 0.2f;
+    [SerializeField] private float _landingCheckDistance = 0.2f;
     [SerializeField] private float _groundSphereRadius = 0.2f;
+    [SerializeField] private float _landingSphereRadius = 1f;
+    [SerializeField] private float _fallSpeed = 1f;
 
     [Header("Crouching")]
     [SerializeField] private float _standingHeight = 2f;
@@ -32,6 +36,7 @@ public class PlayerMoveControllerRB : MonoBehaviour
     [SerializeField] private float _crouchTransitionSpeed = 10f;
 
     [Header("Swimming")]
+    [SerializeField] private PlayerInput _playerInput;
     [SerializeField] private float _swimSpeed = 4f;
     [SerializeField] private float _swimUpAcceleration = 8f;
     [SerializeField] private float _swimDownAcceleration = 3f;
@@ -80,11 +85,32 @@ public class PlayerMoveControllerRB : MonoBehaviour
 
         if (animator == null)
             animator = GetComponentInChildren<Animator>();
+        if(_playerInput == null)
+            _playerInput = GetComponent<PlayerInput>();
+
+        var jumpAction = _playerInput.actions["Jump"];
+        jumpAction.performed += OnJumpInput;
+        jumpAction.canceled += OnJumpInput;
+
+        var crouchAction = _playerInput.actions["Crouch"];
+        crouchAction.performed += OnCrouchInput;
+        crouchAction.canceled += OnCrouchInput;
+    }
+
+    private void OnJumpInput(InputAction.CallbackContext context)
+    {
+        _jumpHeld = context.ReadValueAsButton();
+    }
+
+    private void OnCrouchInput(InputAction.CallbackContext context)
+    {
+        _crouchHeld = context.ReadValueAsButton();
     }
 
     private void Start()
     {
         _playerItems.transform.position +=  new Vector3(0, _capsule.height/ 2, 0);
+        _standingHeight = _capsule.height;
 
         if (_currentMonster == MonsterSelector.Prul && _waterSimulation != null)
         {
@@ -94,9 +120,6 @@ public class PlayerMoveControllerRB : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _jumpHeld = Keyboard.current.spaceKey.isPressed;
-        _crouchHeld = Keyboard.current.leftCtrlKey.isPressed;
-
         if (_currentMonster == MonsterSelector.Prul)
         {
             if (!_isInWaterVolume && _isUsingUnderwaterCamera)
@@ -111,7 +134,7 @@ public class PlayerMoveControllerRB : MonoBehaviour
                     _normalCam.Priority = 20;
                 }
             }
-
+            Debug.Log($"Is in water volume: {_isInWaterVolume}, is swimming: {_isSwimming}, water exit timer: {_waterExitTimer}, jump held: {_jumpHeld}, crouch held: {_crouchHeld}");
             if (_isInWaterVolume)
             {
                 _isSwimming = true;
@@ -138,19 +161,19 @@ public class PlayerMoveControllerRB : MonoBehaviour
         switch(_currentMonster)
         {
             case MonsterSelector.Marsh:
-                if(_moveInput != Vector2.zero)
+                if(_alignWithView && _moveInput != Vector2.zero)
                     UpdateRotation();
                 Move();
                 SmoothCrouch();
                 break;
             case MonsterSelector.Minty:
-                if(_moveInput != Vector2.zero)
+                if(_alignWithView && _moveInput != Vector2.zero)
                     UpdateRotation();
                 Move();
                 SmoothCrouch();
                 break;
             case MonsterSelector.Rainbow:
-                if(_moveInput != Vector2.zero)
+                if(_alignWithView && _moveInput != Vector2.zero)
                     UpdateRotation();
                 Move();
                 SmoothCrouch();
@@ -158,8 +181,7 @@ public class PlayerMoveControllerRB : MonoBehaviour
             case MonsterSelector.Prul:
                 if (_isSwimming)
                 {
-                    if (_moveInput != Vector2.zero)
-                        UpdateRotation();
+                    UpdateRotation();
                     Swimming();
                 }
                 else
@@ -170,6 +192,8 @@ public class PlayerMoveControllerRB : MonoBehaviour
                     SmoothCrouch();
                 }
                 break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
         UpdateAnimations();
         UpdateSounds();
@@ -212,6 +236,9 @@ public class PlayerMoveControllerRB : MonoBehaviour
         if (!IsGrounded()) velocityChange *= _airSpeedMultiplier;
         
         _rb.AddForce(velocityChange, ForceMode.VelocityChange);
+        
+        if(IsFalling())
+            _rb.AddForce(Vector3.down * _fallSpeed, ForceMode.Force);
     }
 
     private void SmoothCrouch()
@@ -229,6 +256,7 @@ public class PlayerMoveControllerRB : MonoBehaviour
 
     private void Swimming()
     {
+        Debug.Log("swimming");
         _rb.linearDamping = _swimDrag;
         _rb.useGravity = false;
 
@@ -243,6 +271,7 @@ public class PlayerMoveControllerRB : MonoBehaviour
 
         if (_jumpHeld)
         {
+            Debug.Log("Jump held");
             _rb.AddForce(Vector3.up * _swimUpAcceleration, ForceMode.Acceleration);
         }
         else if (_crouchHeld)
@@ -306,11 +335,12 @@ public class PlayerMoveControllerRB : MonoBehaviour
         return Physics.SphereCast(ray, _groundSphereRadius, out _hitInfo, _groundCheckDistance + (_groundSphereRadius + 0.1f));
     }
 
+    private bool IsFalling() => !IsGrounded() && _rb.linearVelocity.y <= 0;
+
     // Input System Callbacks
     public void OnMove(InputValue value)
     {
         _moveInput = value.Get<Vector2>();
-        Debug.Log("Move callback");
     }
 
     public void OnJump(InputValue value)
@@ -363,12 +393,20 @@ public class PlayerMoveControllerRB : MonoBehaviour
 
     private void UpdateAnimations()
     {
-        bool grounded = IsGrounded();
-        //bool moving = _moveInput != Vector2.zero;
-        bool moving = _moveInput.magnitude > 0.1f;
-
-        animator.SetBool("IsMoving", moving);
-        animator.SetBool("IsGrounded", grounded);
+        animator.SetBool("IsMoving", _moveInput.magnitude > 0.1f);
+        animator.SetBool("IsGrounded", IsGrounded());
+        
+        
+        Vector3 origin = transform.position + Vector3.up * (_landingSphereRadius + _landingSphereRadius * 0.1f);
+        Ray ray = new Ray(origin, Vector3.down); 
+        if(Physics.SphereCast(ray, _landingSphereRadius, out _hitInfo, _landingCheckDistance) && _rb.linearVelocity.y <= 0.2f)
+        {
+            animator.SetTrigger("Land");
+        }
+        else
+        {
+            animator.ResetTrigger("Land");
+        }
     }
 
     private void UpdateSounds()

@@ -29,6 +29,7 @@ public class Rotatable : MonoBehaviour, IInteractable
         Vector3 euler = transform.localEulerAngles;
         _yaw = euler.y;
         _pitch = euler.x;
+        _camera.enabled = false;
     }
     
     public void Started(PlayerInput playerInput)
@@ -39,7 +40,7 @@ public class Rotatable : MonoBehaviour, IInteractable
         _playerCamera = playerInput.GetComponent<PlayerMoveControllerRB>().OrbitalFollow.GetComponent<CinemachineCamera>();
         _playerCamera.Priority = -100;
         _lookAction = playerInput.actions["Look"];
-        _lookAction.started += OnLookInput;
+        _lookAction.performed += OnLookInput;
         _lookAction.canceled += OnLookInput;
     }
     
@@ -47,7 +48,7 @@ public class Rotatable : MonoBehaviour, IInteractable
     {
         _active = false;
         _camera.enabled = false;
-        _lookAction.started -= OnLookInput;
+        _lookAction.performed -= OnLookInput;
         _lookAction.canceled -= OnLookInput;
         _playerCamera.Priority = 0;
     }

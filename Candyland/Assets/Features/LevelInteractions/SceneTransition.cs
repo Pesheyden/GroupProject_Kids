@@ -12,17 +12,10 @@ public class SceneTransition : MonoBehaviour
     public async void LoadScene(int index)
     {
         var lastScene = SceneManager.GetActiveScene();
-        await SceneTransitionAsync(lastScene,SceneManager.GetSceneByBuildIndex(index).name);
+        await SceneTransitionAsync(lastScene,index);
     }
-
-    public async void LoadScene(string name)
-    {
-        var lastScene = SceneManager.GetActiveScene();
-        await SceneTransitionAsync(lastScene, name);
-    }
-
-
-    private async Task SceneTransitionAsync(Scene unloadScene, string sceneName)
+    
+    private async Task SceneTransitionAsync(Scene unloadScene, int sceneIndex)
     {
             await SceneManager.LoadSceneAsync(_transitionSceneName, LoadSceneMode.Additive);
 
@@ -34,7 +27,8 @@ public class SceneTransition : MonoBehaviour
             await _animationAwaitableCompletionSource.Awaitable;
 
             await SceneManager.UnloadSceneAsync(unloadScene);
-            await SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+            Debug.Log(sceneIndex);
+            await SceneManager.LoadSceneAsync(sceneIndex, LoadSceneMode.Additive);
 
             _animationAwaitableCompletionSource = new AwaitableCompletionSource();
             FindAnyObjectByType<AnimationsTrigger>(FindObjectsInactive.Exclude).Trigger(1, true, _animationAwaitableCompletionSource);

@@ -18,7 +18,7 @@ public class BillboardUI : MonoBehaviour
         if(!other.CompareTag("Player")) return;
 
         PlayerMoveControllerRB player = other.GetComponent<PlayerMoveControllerRB>();
-        _otherPosition = player.transform;
+        _otherPosition = player.OrbitalFollow.transform;
 
         StartCoroutine(ShowBillboard());
     }

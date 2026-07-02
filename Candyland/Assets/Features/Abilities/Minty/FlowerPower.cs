@@ -5,45 +5,43 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using System.Net.NetworkInformation;
 using System;
+using NaughtyAttributes;
+using UnityUtils;
 
 
 [Serializable]
 public class FlowerSection
 {
-    public List<Transform> flowerStems = new List<Transform>();
-    public List<Transform> flowerLeaves = new List<Transform>();
-    public List<Transform> flowerPetals = new List<Transform>();
+    public Transform flowerStem;
+    public List<Transform> flowerParts = new List<Transform>();
 }
+
 public class FlowerPower : MonoBehaviour, IInteractable
 {
-    [SerializeField] private List<FlowerSection> flowerSections;
+    [ReadOnly] [SerializeField] private List<FlowerSection> flowerSections;
     [SerializeField] private float _stemGrowTime;
     [SerializeField] private float _leaveGrowTime;
     [SerializeField] private float _petalsGrowTime;
-    //[SerializeField] private Animator animator;
 
     private bool isGrowing = false;
     private bool isGrown = false;
 
     void Start()
     {
-        foreach(var section in flowerSections)
+        flowerSections = new List<FlowerSection>();
+        foreach (var stem in transform.Children())
         {
-            foreach (var stem in section.flowerStems)
+            var section = new FlowerSection();
+            flowerSections.Add(section);
+            section.flowerStem = stem;
+            foreach (var part in stem.Children())
             {
-                stem.localScale = new Vector3(1, 0, 1);
-                stem.gameObject.SetActive(false);
+                section.flowerParts.Add(part);
+                part.localScale = Vector3.zero;
             }
 
-            foreach (var leaf in section.flowerLeaves)
-            {
-                leaf.localScale = Vector3.zero;
-            }
-
-            foreach (var petal in section.flowerPetals)
-            {
-                petal.localScale = Vector3.zero;
-            }
+            stem.localScale = new Vector3(1, 0, 1);
+            stem.gameObject.SetActive(false);
         }
     }
 
@@ -54,11 +52,11 @@ public class FlowerPower : MonoBehaviour, IInteractable
 
         float timer = 0f;
 
-        while(timer < duration)
+        while (timer < duration)
         {
             timer += Time.deltaTime;
 
-            float time = timer/duration;
+            float time = timer / duration;
 
             part.localScale = Vector3.Lerp(startScale, endScale, time);
 
@@ -81,7 +79,7 @@ public class FlowerPower : MonoBehaviour, IInteractable
         {
             timer += Time.deltaTime;
 
-            float time = timer/duration;
+            float time = timer / duration;
 
             stem.localScale = Vector3.Lerp(startScale, endScale, time);
 
@@ -91,18 +89,18 @@ public class FlowerPower : MonoBehaviour, IInteractable
         stem.localScale = endScale;
     }
 
-        IEnumerator ShrinkPart(Transform part, float duration)
+    IEnumerator ShrinkPart(Transform part, float duration)
     {
         Vector3 startScale = Vector3.one;
         Vector3 endScale = Vector3.zero;
 
         float timer = 0f;
 
-        while(timer < duration)
+        while (timer < duration)
         {
             timer += Time.deltaTime;
 
-            float time = timer/duration;
+            float time = timer / duration;
 
             part.localScale = Vector3.Lerp(startScale, endScale, time);
 
@@ -123,7 +121,7 @@ public class FlowerPower : MonoBehaviour, IInteractable
         {
             timer += Time.deltaTime;
 
-            float time = timer/duration;
+            float time = timer / duration;
 
             stem.localScale = Vector3.Lerp(startScale, endScale, time);
 
@@ -141,20 +139,15 @@ public class FlowerPower : MonoBehaviour, IInteractable
         isGrown = true;
 
 
-        foreach(var section in flowerSections)
+        foreach (var section in flowerSections)
         {
-            var flowerStems = section.flowerStems;
-            var flowerLeaves = section.flowerLeaves;
-            var flowerPetals = section.flowerPetals;
+            var flowerStems = section.flowerStem;
+            var flowerLeaves = section.flowerParts;
 
             if (flowerStems != null)
             {
-                for (int i = 0; i < flowerStems.Count; i++)
-                {
-                    StartCoroutine(GrowStem(flowerStems[i], _stemGrowTime));
-                    yield return new WaitForSeconds(_stemGrowTime);
-                }
-
+                StartCoroutine(GrowStem(flowerStems, _stemGrowTime));
+                yield return new WaitForSeconds(_stemGrowTime);
             }
 
             if (flowerLeaves != null)
@@ -163,16 +156,6 @@ public class FlowerPower : MonoBehaviour, IInteractable
                 {
                     StartCoroutine(GrowPart(flowerLeaves[i], _leaveGrowTime));
                     yield return new WaitForSeconds(_leaveGrowTime);
-                }
-
-            }
-
-            if (flowerPetals != null)
-            {
-                for (int i = 0; i < flowerPetals.Count; i++)
-                {
-                    StartCoroutine(GrowPart(flowerPetals[i], _petalsGrowTime));
-                    yield return new WaitForSeconds(_petalsGrowTime);
                 }
             }
         }
@@ -187,19 +170,9 @@ public class FlowerPower : MonoBehaviour, IInteractable
         for (int j = flowerSections.Count - 1; j >= 0; j--)
         {
             FlowerSection section = flowerSections[j];
-            var flowerStems = section.flowerStems;
-            var flowerLeaves = section.flowerLeaves;
-            var flowerPetals = section.flowerPetals;
+            var flowerStems = section.flowerStem;
+            var flowerLeaves = section.flowerParts;
 
-            if (flowerPetals != null)
-            {
-                for (int i = flowerPetals.Count - 1; i >= 0; i--)
-                {
-                    StartCoroutine(ShrinkPart(flowerPetals[i], _petalsGrowTime));
-                    yield return new WaitForSeconds(_petalsGrowTime);
-                }
-
-            }
 
             if (flowerLeaves != null)
             {
@@ -208,24 +181,19 @@ public class FlowerPower : MonoBehaviour, IInteractable
                     StartCoroutine(ShrinkPart(flowerLeaves[i], _leaveGrowTime));
                     yield return new WaitForSeconds(_leaveGrowTime);
                 }
-
             }
 
             if (flowerStems != null)
             {
-                for (int i = flowerStems.Count - 1; i >= 0; i--)
-                {
-                    StartCoroutine(ShrinkStem(flowerStems[i], _stemGrowTime));
-                    yield return new WaitForSeconds(_stemGrowTime);
-                }
-
+                StartCoroutine(ShrinkStem(flowerStems, _stemGrowTime));
+                yield return new WaitForSeconds(_stemGrowTime);
             }
-
         }
+
         isGrowing = false;
         isGrown = false;
     }
-
+    
     public void Started(PlayerInput playerInput)
     {
         Debug.Log("Flower Power Started");
@@ -245,7 +213,6 @@ public class FlowerPower : MonoBehaviour, IInteractable
 
     public void Canceled(PlayerInput playerInput)
     {
-
     }
 
 

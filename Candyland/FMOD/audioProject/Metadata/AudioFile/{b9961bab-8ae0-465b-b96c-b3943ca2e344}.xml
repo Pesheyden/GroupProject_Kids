@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{b9961bab-8ae0-465b-b96c-b3943ca2e344}">
+		<property name="assetPath">
+			<value>ambient23 (1).mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>74.657959183673469</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{c5563c48-b874-465e-8756-1ea46fcb305c}</destination>
+		</relationship>
+	</object>
+</objects>
