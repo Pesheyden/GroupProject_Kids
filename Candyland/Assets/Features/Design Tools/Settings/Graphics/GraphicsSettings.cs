@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class GraphicsSettings : MonoBehaviour
 {
     [SerializeField] private TMP_Dropdown resolutionDropdown;
-    [SerializeField] private Slider gammaSlider;
+    [SerializeField] private Slider brightnessSlider;
     [SerializeField] private TMP_Dropdown qualityDropdown;
     [SerializeField] private TMP_Dropdown fpsDropdown;
 
@@ -42,12 +42,12 @@ public class GraphicsSettings : MonoBehaviour
 
     void SetupGammaSlider()
     {
-        gammaSlider.minValue = 0.5f;
-        gammaSlider.maxValue = 2f;
+        brightnessSlider.minValue = 0.5f;
+        brightnessSlider.maxValue = 2f;
 
-        gammaSlider.value = GraphicsManagement.Instance.GetGamma();
+        brightnessSlider.value = GraphicsManagement.Instance.GetGamma();
 
-        gammaSlider.onValueChanged.AddListener(OnGammaChanged);
+        brightnessSlider.onValueChanged.AddListener(OnGammaChanged);
     }
 
     public void OnResolutionChanged(int index)
@@ -106,6 +106,6 @@ public class GraphicsSettings : MonoBehaviour
     private void OnDestroy()
     {
         resolutionDropdown.onValueChanged.RemoveListener(OnResolutionChanged);
-        gammaSlider.onValueChanged.RemoveListener(OnGammaChanged);
+        brightnessSlider.onValueChanged.RemoveListener(OnGammaChanged);
     }
 }

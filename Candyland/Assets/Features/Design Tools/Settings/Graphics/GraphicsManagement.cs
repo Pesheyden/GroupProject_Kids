@@ -8,7 +8,7 @@ public class GraphicsManagement : MonoBehaviour
 
     [Header("Graphics")]
     [Range(0.5f, 2f)]
-    [SerializeField] private float gamma = 1f;
+    [SerializeField] private float brightness = 1f;
 
     [SerializeField] private int resolutionIndex;
     [SerializeField] private Volume volume;
@@ -27,7 +27,7 @@ public class GraphicsManagement : MonoBehaviour
     {
         volume.profile.TryGet(out colorAdjustments);
 
-        colorAdjustments.postExposure.value = gamma;
+        colorAdjustments.postExposure.value = brightness;
 
         SetResolution(resolutionIndex);
         SetFullscreen(fullScreen);
@@ -66,7 +66,7 @@ public class GraphicsManagement : MonoBehaviour
 
     public float GetGamma()
     {
-        return gamma;
+        return brightness;
     }
 
     public void SetResolution(int index)
@@ -85,15 +85,15 @@ public class GraphicsManagement : MonoBehaviour
 
     public void SetGamma(float value)
     {
-        gamma = value;
+        brightness = value;
 
         //Apply gamma to a global post-processing volume or shader exposure here
-        colorAdjustments.postExposure.value = gamma;
+        colorAdjustments.postExposure.value = brightness;
 
-        PlayerPrefs.SetFloat("Gamma", gamma);
+        PlayerPrefs.SetFloat("Gamma", brightness);
         PlayerPrefs.Save();
 
-        Debug.Log($"Gamma: {gamma:F2}");
+        Debug.Log($"Gamma: {brightness:F2}");
     }
 
     public void SetFullscreen(bool value)
@@ -122,7 +122,7 @@ public class GraphicsManagement : MonoBehaviour
         PlayerPrefs.SetInt("Quality", qualityIndex);
         PlayerPrefs.Save();
 
-        Debug.Log("Quality: " + QualitySettings.names[index]);
+        //Debug.Log("Quality: " + QualitySettings.names[index]);
     }
 
     public int GetQuality()
@@ -164,7 +164,7 @@ public class GraphicsManagement : MonoBehaviour
 
     private void LoadSettings()
     {
-        gamma = PlayerPrefs.GetFloat("Gamma", 0f);
+        brightness = PlayerPrefs.GetFloat("Gamma", 0f);
 
         resolutionIndex = PlayerPrefs.GetInt("Resolution", resolutions.Length - 1);
 

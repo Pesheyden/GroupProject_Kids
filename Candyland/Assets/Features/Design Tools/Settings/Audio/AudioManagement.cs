@@ -31,7 +31,7 @@ public class AudioManagement : MonoBehaviour
 
             masterVCA = RuntimeManager.GetVCA("vca:/Master");
             musicVCA = RuntimeManager.GetVCA("vca:/Music");
-            ambienceVCA = RuntimeManager.GetVCA("vca:/Ambience");
+            ambienceVCA = RuntimeManager.GetVCA("vca:/Ambiance");
             sfxVCA = RuntimeManager.GetVCA("vca:/SFX");
 
             LoadSettings();

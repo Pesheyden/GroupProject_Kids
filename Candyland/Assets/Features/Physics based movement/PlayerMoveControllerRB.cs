@@ -27,6 +27,7 @@ public class PlayerMoveControllerRB : MonoBehaviour
     [SerializeField] private float _groundCheckDistance = 0.2f;
     [SerializeField] private float _landingCheckDistance = 0.2f;
     [SerializeField] private float _groundSphereRadius = 0.2f;
+    [SerializeField] private float _landingSphereRadius = 1f;
     [SerializeField] private float _fallSpeed = 1f;
 
     [Header("Crouching")]
@@ -35,6 +36,7 @@ public class PlayerMoveControllerRB : MonoBehaviour
     [SerializeField] private float _crouchTransitionSpeed = 10f;
 
     [Header("Swimming")]
+    [SerializeField] private PlayerInput _playerInput;
     [SerializeField] private float _swimSpeed = 4f;
     [SerializeField] private float _swimUpAcceleration = 8f;
     [SerializeField] private float _swimDownAcceleration = 3f;
@@ -83,6 +85,26 @@ public class PlayerMoveControllerRB : MonoBehaviour
 
         if (animator == null)
             animator = GetComponentInChildren<Animator>();
+        if(_playerInput == null)
+            _playerInput = GetComponent<PlayerInput>();
+
+        var jumpAction = _playerInput.actions["Jump"];
+        jumpAction.performed += OnJumpInput;
+        jumpAction.canceled += OnJumpInput;
+
+        var crouchAction = _playerInput.actions["Crouch"];
+        crouchAction.performed += OnCrouchInput;
+        crouchAction.canceled += OnCrouchInput;
+    }
+
+    private void OnJumpInput(InputAction.CallbackContext context)
+    {
+        _jumpHeld = context.ReadValueAsButton();
+    }
+
+    private void OnCrouchInput(InputAction.CallbackContext context)
+    {
+        _crouchHeld = context.ReadValueAsButton();
     }
 
     private void Start()
@@ -98,9 +120,6 @@ public class PlayerMoveControllerRB : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _jumpHeld = Keyboard.current.spaceKey.isPressed;
-        _crouchHeld = Keyboard.current.leftCtrlKey.isPressed;
-
         if (_currentMonster == MonsterSelector.Prul)
         {
             if (!_isInWaterVolume && _isUsingUnderwaterCamera)
@@ -115,7 +134,7 @@ public class PlayerMoveControllerRB : MonoBehaviour
                     _normalCam.Priority = 20;
                 }
             }
-
+            Debug.Log($"Is in water volume: {_isInWaterVolume}, is swimming: {_isSwimming}, water exit timer: {_waterExitTimer}, jump held: {_jumpHeld}, crouch held: {_crouchHeld}");
             if (_isInWaterVolume)
             {
                 _isSwimming = true;
@@ -162,8 +181,7 @@ public class PlayerMoveControllerRB : MonoBehaviour
             case MonsterSelector.Prul:
                 if (_isSwimming)
                 {
-                    if (_moveInput != Vector2.zero)
-                        UpdateRotation();
+                    UpdateRotation();
                     Swimming();
                 }
                 else
@@ -238,6 +256,7 @@ public class PlayerMoveControllerRB : MonoBehaviour
 
     private void Swimming()
     {
+        Debug.Log("swimming");
         _rb.linearDamping = _swimDrag;
         _rb.useGravity = false;
 
@@ -252,6 +271,7 @@ public class PlayerMoveControllerRB : MonoBehaviour
 
         if (_jumpHeld)
         {
+            Debug.Log("Jump held");
             _rb.AddForce(Vector3.up * _swimUpAcceleration, ForceMode.Acceleration);
         }
         else if (_crouchHeld)
@@ -377,11 +397,16 @@ public class PlayerMoveControllerRB : MonoBehaviour
         animator.SetBool("IsGrounded", IsGrounded());
         
         
-        Vector3 origin = transform.position + Vector3.up * (_groundSphereRadius + 0.1f);
+        Vector3 origin = transform.position + Vector3.up * (_landingSphereRadius + _landingSphereRadius * 0.1f);
         Ray ray = new Ray(origin, Vector3.down); 
-        animator.SetBool("IsLanding", 
-            Physics.SphereCast(ray, _groundSphereRadius, out _hitInfo, _landingCheckDistance + (_groundSphereRadius + 0.1f)) &&
-            _rb.linearVelocity.y <= 0.2f); 
+        if(Physics.SphereCast(ray, _landingSphereRadius, out _hitInfo, _landingCheckDistance) && _rb.linearVelocity.y <= 0.2f)
+        {
+            animator.SetTrigger("Land");
+        }
+        else
+        {
+            animator.ResetTrigger("Land");
+        }
     }
 
     private void UpdateSounds()

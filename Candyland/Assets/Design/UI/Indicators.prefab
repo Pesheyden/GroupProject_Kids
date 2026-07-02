@@ -1,0 +1,1298 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2093948285173077408
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 398347398789337144}
+  - component: {fileID: 2771767025467564183}
+  - component: {fileID: 2715526076350997449}
+  m_Layer: 0
+  m_Name: AbilityIndocator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &398347398789337144
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093948285173077408}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.35296762, z: -0, w: 0.9356356}
+  m_LocalPosition: {x: 16.570007, y: 9.629999, z: 23.97998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7849006024058672173}
+  m_LocalEulerAnglesHint: {x: 0, y: -41.338, z: 0}
+--- !u!114 &2771767025467564183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093948285173077408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18b2e99fd446c8d4ba0def03811c1874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PulsatingTrigger
+  onMintyEventEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PulsatingUI, Assembly-CSharp
+        m_MethodName: StartPulsating
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onMarshEventEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onRainbowEventEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onPearlEventEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onMintyEventExit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PulsatingUI, Assembly-CSharp
+        m_MethodName: StopPulsating
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onMarshEventExit:
+    m_PersistentCalls:
+      m_Calls: []
+  onRainbowEventExit:
+    m_PersistentCalls:
+      m_Calls: []
+  onPearlEventExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!65 &2715526076350997449
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093948285173077408}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &2237424510933287832
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1440404387461997252}
+  - component: {fileID: 6849784328840161396}
+  - component: {fileID: 6146016930195935674}
+  m_Layer: 0
+  m_Name: AbilityIndocator (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1440404387461997252
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2237424510933287832}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.66196704, z: -0, w: 0.749533}
+  m_LocalPosition: {x: 3.37, y: 7.83, z: -127.21}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7849006024058672173}
+  m_LocalEulerAnglesHint: {x: 0, y: -82.9, z: 0}
+--- !u!114 &6849784328840161396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2237424510933287832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18b2e99fd446c8d4ba0def03811c1874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PulsatingTrigger
+  onMintyEventEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onMarshEventEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PulsatingUI, Assembly-CSharp
+        m_MethodName: StartPulsating
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onRainbowEventEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onPearlEventEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onMintyEventExit:
+    m_PersistentCalls:
+      m_Calls: []
+  onMarshEventExit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PulsatingUI, Assembly-CSharp
+        m_MethodName: StartPulsating
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onRainbowEventExit:
+    m_PersistentCalls:
+      m_Calls: []
+  onPearlEventExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!65 &6146016930195935674
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2237424510933287832}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &2614817563613798210
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7836924061412410406}
+  - component: {fileID: 1551320104518366615}
+  - component: {fileID: 884445200896743523}
+  m_Layer: 0
+  m_Name: AbilityIndocator (8)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7836924061412410406
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2614817563613798210}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.35296762, z: -0, w: 0.9356356}
+  m_LocalPosition: {x: -47.37, y: 67.61, z: -294.38}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7849006024058672173}
+  m_LocalEulerAnglesHint: {x: 0, y: -41.338, z: 0}
+--- !u!114 &1551320104518366615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2614817563613798210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18b2e99fd446c8d4ba0def03811c1874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PulsatingTrigger
+  onMintyEventEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onMarshEventEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onRainbowEventEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PulsatingUI, Assembly-CSharp
+        m_MethodName: StartPulsating
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onPearlEventEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onMintyEventExit:
+    m_PersistentCalls:
+      m_Calls: []
+  onMarshEventExit:
+    m_PersistentCalls:
+      m_Calls: []
+  onRainbowEventExit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PulsatingUI, Assembly-CSharp
+        m_MethodName: StopPulsating
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onPearlEventExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!65 &884445200896743523
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2614817563613798210}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &3100203226376182151
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8771211325311796911}
+  - component: {fileID: 7284781612154221378}
+  - component: {fileID: 1721155046634245000}
+  m_Layer: 0
+  m_Name: AbilityIndocator (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8771211325311796911
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3100203226376182151}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.620606, z: -0, w: 0.7841225}
+  m_LocalPosition: {x: -3.49, y: 9.629999, z: -167.31}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7849006024058672173}
+  m_LocalEulerAnglesHint: {x: 0, y: -76.721, z: 0}
+--- !u!114 &7284781612154221378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3100203226376182151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18b2e99fd446c8d4ba0def03811c1874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PulsatingTrigger
+  onMintyEventEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PulsatingUI, Assembly-CSharp
+        m_MethodName: StartPulsating
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onMarshEventEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onRainbowEventEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onPearlEventEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onMintyEventExit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PulsatingUI, Assembly-CSharp
+        m_MethodName: StopPulsating
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onMarshEventExit:
+    m_PersistentCalls:
+      m_Calls: []
+  onRainbowEventExit:
+    m_PersistentCalls:
+      m_Calls: []
+  onPearlEventExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!65 &1721155046634245000
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3100203226376182151}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &3172313563972983955
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5349834243093708397}
+  - component: {fileID: 6654614931391650265}
+  - component: {fileID: 573086013225067892}
+  m_Layer: 0
+  m_Name: AbilityIndocator (10)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5349834243093708397
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3172313563972983955}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.53751224, z: -0, w: 0.843256}
+  m_LocalPosition: {x: -51.26, y: 163.4, z: -435.43}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7849006024058672173}
+  m_LocalEulerAnglesHint: {x: 0, y: -65.029, z: 0}
+--- !u!114 &6654614931391650265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3172313563972983955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18b2e99fd446c8d4ba0def03811c1874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PulsatingTrigger
+  onMintyEventEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onMarshEventEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PulsatingUI, Assembly-CSharp
+        m_MethodName: StartPulsating
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onRainbowEventEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onPearlEventEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onMintyEventExit:
+    m_PersistentCalls:
+      m_Calls: []
+  onMarshEventExit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PulsatingUI, Assembly-CSharp
+        m_MethodName: StartPulsating
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onRainbowEventExit:
+    m_PersistentCalls:
+      m_Calls: []
+  onPearlEventExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!65 &573086013225067892
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3172313563972983955}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &4861692820521943612
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7849006024058672173}
+  m_Layer: 0
+  m_Name: Indicators
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7849006024058672173
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4861692820521943612}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 398347398789337144}
+  - {fileID: 8771211325311796911}
+  - {fileID: 3061255942419683267}
+  - {fileID: 9152916218056336085}
+  - {fileID: 2175649939697970490}
+  - {fileID: 4645180245446782127}
+  - {fileID: 7836924061412410406}
+  - {fileID: 7943526620635701819}
+  - {fileID: 1440404387461997252}
+  - {fileID: 3925971567800274275}
+  - {fileID: 5349834243093708397}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5053965824355497122
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2175649939697970490}
+  - component: {fileID: 1146762193197560344}
+  - component: {fileID: 1907041541833160612}
+  m_Layer: 0
+  m_Name: AbilityIndocator (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2175649939697970490
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5053965824355497122}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.620606, z: -0, w: 0.7841225}
+  m_LocalPosition: {x: -66.13, y: 35.04, z: -24.43}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7849006024058672173}
+  m_LocalEulerAnglesHint: {x: 0, y: -76.721, z: 0}
+--- !u!114 &1146762193197560344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5053965824355497122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18b2e99fd446c8d4ba0def03811c1874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PulsatingTrigger
+  onMintyEventEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onMarshEventEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onRainbowEventEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onPearlEventEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PulsatingUI, Assembly-CSharp
+        m_MethodName: StartPulsating
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onMintyEventExit:
+    m_PersistentCalls:
+      m_Calls: []
+  onMarshEventExit:
+    m_PersistentCalls:
+      m_Calls: []
+  onRainbowEventExit:
+    m_PersistentCalls:
+      m_Calls: []
+  onPearlEventExit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PulsatingUI, Assembly-CSharp
+        m_MethodName: StopPulsating
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!65 &1907041541833160612
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5053965824355497122}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 18.880613, y: 21.15875, z: 16.819593}
+  m_Center: {x: -1.9353781, y: -5.5793753, z: 3.4097943}
+--- !u!1 &5205402419574855926
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7943526620635701819}
+  - component: {fileID: 6064654480458443013}
+  - component: {fileID: 4545718170553812788}
+  m_Layer: 0
+  m_Name: AbilityIndocator (9)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7943526620635701819
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5205402419574855926}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.5278785, z: -0, w: 0.84931993}
+  m_LocalPosition: {x: -41.61, y: 173.99, z: -442.16}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7849006024058672173}
+  m_LocalEulerAnglesHint: {x: 0, y: -63.724, z: 0}
+--- !u!114 &6064654480458443013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5205402419574855926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18b2e99fd446c8d4ba0def03811c1874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PulsatingTrigger
+  onMintyEventEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onMarshEventEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onRainbowEventEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PulsatingUI, Assembly-CSharp
+        m_MethodName: StartPulsating
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onPearlEventEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onMintyEventExit:
+    m_PersistentCalls:
+      m_Calls: []
+  onMarshEventExit:
+    m_PersistentCalls:
+      m_Calls: []
+  onRainbowEventExit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PulsatingUI, Assembly-CSharp
+        m_MethodName: StopPulsating
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onPearlEventExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!65 &4545718170553812788
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5205402419574855926}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &7377793862425864541
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3925971567800274275}
+  - component: {fileID: 7357604668748485225}
+  - component: {fileID: 3369679384793530082}
+  m_Layer: 0
+  m_Name: AbilityIndocator (7)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3925971567800274275
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7377793862425864541}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.66196704, z: -0, w: 0.749533}
+  m_LocalPosition: {x: -58, y: 61.8, z: -312.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7849006024058672173}
+  m_LocalEulerAnglesHint: {x: 0, y: -82.9, z: 0}
+--- !u!114 &7357604668748485225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7377793862425864541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18b2e99fd446c8d4ba0def03811c1874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PulsatingTrigger
+  onMintyEventEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onMarshEventEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PulsatingUI, Assembly-CSharp
+        m_MethodName: StartPulsating
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onRainbowEventEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onPearlEventEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onMintyEventExit:
+    m_PersistentCalls:
+      m_Calls: []
+  onMarshEventExit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PulsatingUI, Assembly-CSharp
+        m_MethodName: StartPulsating
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onRainbowEventExit:
+    m_PersistentCalls:
+      m_Calls: []
+  onPearlEventExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!65 &3369679384793530082
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7377793862425864541}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &8426783429401315596
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9152916218056336085}
+  - component: {fileID: 2825293306291080648}
+  - component: {fileID: 5842733039522738179}
+  m_Layer: 0
+  m_Name: AbilityIndocator (6)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9152916218056336085
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8426783429401315596}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.620606, z: -0, w: 0.7841225}
+  m_LocalPosition: {x: -19.57, y: 53.22, z: -236.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7849006024058672173}
+  m_LocalEulerAnglesHint: {x: 0, y: -76.721, z: 0}
+--- !u!114 &2825293306291080648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8426783429401315596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18b2e99fd446c8d4ba0def03811c1874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PulsatingTrigger
+  onMintyEventEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onMarshEventEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onRainbowEventEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onPearlEventEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PulsatingUI, Assembly-CSharp
+        m_MethodName: StartPulsating
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onMintyEventExit:
+    m_PersistentCalls:
+      m_Calls: []
+  onMarshEventExit:
+    m_PersistentCalls:
+      m_Calls: []
+  onRainbowEventExit:
+    m_PersistentCalls:
+      m_Calls: []
+  onPearlEventExit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PulsatingUI, Assembly-CSharp
+        m_MethodName: StopPulsating
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!65 &5842733039522738179
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8426783429401315596}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &8523956789034874337
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3061255942419683267}
+  - component: {fileID: 6481484572840862146}
+  - component: {fileID: 1870502215250285480}
+  m_Layer: 0
+  m_Name: AbilityIndocator (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3061255942419683267
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8523956789034874337}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.620606, z: -0, w: 0.7841225}
+  m_LocalPosition: {x: -81.3, y: 35.47, z: 8.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7849006024058672173}
+  m_LocalEulerAnglesHint: {x: 0, y: -76.721, z: 0}
+--- !u!114 &6481484572840862146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8523956789034874337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18b2e99fd446c8d4ba0def03811c1874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PulsatingTrigger
+  onMintyEventEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onMarshEventEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onRainbowEventEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onPearlEventEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PulsatingUI, Assembly-CSharp
+        m_MethodName: StartPulsating
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onMintyEventExit:
+    m_PersistentCalls:
+      m_Calls: []
+  onMarshEventExit:
+    m_PersistentCalls:
+      m_Calls: []
+  onRainbowEventExit:
+    m_PersistentCalls:
+      m_Calls: []
+  onPearlEventExit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PulsatingUI, Assembly-CSharp
+        m_MethodName: StopPulsating
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!65 &1870502215250285480
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8523956789034874337}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &8621296638142685379
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4645180245446782127}
+  - component: {fileID: 4543057619722912847}
+  - component: {fileID: 3909321039945748918}
+  m_Layer: 0
+  m_Name: AbilityIndocator (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4645180245446782127
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8621296638142685379}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.35296762, z: -0, w: 0.9356356}
+  m_LocalPosition: {x: 6.22, y: 1.6, z: -66.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7849006024058672173}
+  m_LocalEulerAnglesHint: {x: 0, y: -41.338, z: 0}
+--- !u!114 &4543057619722912847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8621296638142685379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18b2e99fd446c8d4ba0def03811c1874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PulsatingTrigger
+  onMintyEventEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onMarshEventEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onRainbowEventEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PulsatingUI, Assembly-CSharp
+        m_MethodName: StartPulsating
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onPearlEventEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onMintyEventExit:
+    m_PersistentCalls:
+      m_Calls: []
+  onMarshEventExit:
+    m_PersistentCalls:
+      m_Calls: []
+  onRainbowEventExit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PulsatingUI, Assembly-CSharp
+        m_MethodName: StopPulsating
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onPearlEventExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!65 &3909321039945748918
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8621296638142685379}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}

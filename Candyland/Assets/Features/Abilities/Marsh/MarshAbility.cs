@@ -30,6 +30,12 @@ public class MarshAbility : MonoBehaviour
         {
             _targetPosition = targets[0].transform.position;
             _platform.Force = targets[0].GetComponent<MarshTarget>().JumpForce;
+            Destroy(targets[0].gameObject);
+            _projectileFlying = true;
+            _projectile.gameObject.SetActive(true);
+            StartCoroutine(CurveMoveTargetCoroutine(_pivot.position, _targetPosition));
+            RuntimeManager.PlayOneShot(special, transform.position);
+            return;
         }
         else
         {
@@ -69,7 +75,24 @@ public class MarshAbility : MonoBehaviour
         
         OnHitTarget(end);
     }
+    private IEnumerator CurveMoveTargetCoroutine(Vector3 start, Vector3 end)
+    {
+        float t;
+        float eclipse = 0;
+        while (eclipse < _duration)
+        {
+            Vector3 control = (start + end) * 0.5f + Vector3.up * Mathf.Sqrt((start - end).sqrMagnitude) / 2;
 
+            t = eclipse / _duration;
+
+            _projectile.position = BezierCurve(start, control, end, t);
+
+            eclipse += Time.deltaTime;
+            yield return null;
+        }
+
+        Instantiate(_platform, end, Quaternion.identity).gameObject.SetActive(true);
+    }
     private void OnHitTarget(Vector3 position)
     {
         _projectileFlying = false;

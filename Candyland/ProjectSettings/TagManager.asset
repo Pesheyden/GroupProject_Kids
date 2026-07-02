@@ -14,6 +14,7 @@ TagManager:
   - RainbowInteractable
   - Destroyable
   - PhysicsObjects
+  - Pearl
   layers:
   - Default
   - TransparentFX
@@ -25,7 +26,7 @@ TagManager:
   - Interactable
   - Mashtarget
   - Platforms
-  - 
+  - Pearl
   - 
   - 
   - 
