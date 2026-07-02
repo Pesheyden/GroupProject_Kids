@@ -6,6 +6,11 @@ public class AnimationsTrigger : MonoBehaviour
 {
     [Header("References")] 
     [SerializeField] private Animation[] _animations;
+
+    public void Trigger()
+    {
+        Trigger(0);
+    }
     
     public void Trigger(int i, bool stopAllAnim = false, AwaitableCompletionSource onAnimFinish = null)
     {
