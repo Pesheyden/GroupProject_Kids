@@ -16,13 +16,14 @@ public class Rotatable : MonoBehaviour, IInteractable
     [SerializeField] private float minPitch = -45f;
     [SerializeField] private float maxPitch = 45f;
 
-    private InputAction _lookAction;
+    private InputAction _moveAction;
     private Vector2 _input;
     private float _pitch;
     private float _yaw;
     private bool _active;
 
     private CinemachineCamera _playerCamera;
+    private RigidbodyConstraints _constrains;
     
     private void Start()
     {
@@ -39,21 +40,23 @@ public class Rotatable : MonoBehaviour, IInteractable
 
         _playerCamera = playerInput.GetComponent<PlayerMoveControllerRB>().OrbitalFollow.GetComponent<CinemachineCamera>();
         _playerCamera.Priority = -100;
-        _lookAction = playerInput.actions["Look"];
-        _lookAction.performed += OnLookInput;
-        _lookAction.canceled += OnLookInput;
+        _moveAction = playerInput.actions["Move"];
+        _moveAction.performed += OnMoveInput;
+        _moveAction.canceled += OnMoveInput;
+        playerInput.GetComponent<Rigidbody>().constraints |= RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezePositionX;
     }
     
     public void Canceled(PlayerInput playerInput)
     {
         _active = false;
         _camera.enabled = false;
-        _lookAction.performed -= OnLookInput;
-        _lookAction.canceled -= OnLookInput;
+        _moveAction.performed -= OnMoveInput;
+        _moveAction.canceled -= OnMoveInput;
         _playerCamera.Priority = 0;
+        playerInput.GetComponent<Rigidbody>().constraints &= ~(RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezePositionX);
     }
     
-    private void OnLookInput(InputAction.CallbackContext obj)
+    private void OnMoveInput(InputAction.CallbackContext obj)
     {
         _input = obj.ReadValue<Vector2>();
     }

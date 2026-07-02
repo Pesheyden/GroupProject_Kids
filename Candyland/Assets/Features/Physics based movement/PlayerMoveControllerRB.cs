@@ -134,7 +134,6 @@ public class PlayerMoveControllerRB : MonoBehaviour
                     _normalCam.Priority = 20;
                 }
             }
-            Debug.Log($"Is in water volume: {_isInWaterVolume}, is swimming: {_isSwimming}, water exit timer: {_waterExitTimer}, jump held: {_jumpHeld}, crouch held: {_crouchHeld}");
             if (_isInWaterVolume)
             {
                 _isSwimming = true;

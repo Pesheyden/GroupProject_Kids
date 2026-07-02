@@ -15,15 +15,15 @@ public class SceneTransition : MonoBehaviour
     
     public async void LoadScene(int index)
     {
-        if(playersRequired.AllConnected == false)
+        if(playersRequired && playersRequired.AllConnected == false)
         {
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(startButton);
 
             return;
-        }
-            var lastScene = SceneManager.GetActiveScene();
-            await SceneTransitionAsync(lastScene,index);
+        } 
+        var lastScene = SceneManager.GetActiveScene();
+        await SceneTransitionAsync(lastScene,index);
     }
     
     private async Task SceneTransitionAsync(Scene unloadScene, int sceneIndex)
@@ -34,7 +34,7 @@ public class SceneTransition : MonoBehaviour
             SceneManager.SetActiveScene(transitionScene);
 
             _animationAwaitableCompletionSource = new AwaitableCompletionSource();
-            FindAnyObjectByType<AnimationsTrigger>(FindObjectsInactive.Exclude).Trigger(0, true, _animationAwaitableCompletionSource);
+            FindInActiveScene<AnimationsTrigger>().Trigger(0, true, _animationAwaitableCompletionSource);
             await _animationAwaitableCompletionSource.Awaitable;
 
             await SceneManager.UnloadSceneAsync(unloadScene);
@@ -42,9 +42,24 @@ public class SceneTransition : MonoBehaviour
             await SceneManager.LoadSceneAsync(sceneIndex, LoadSceneMode.Additive);
 
             _animationAwaitableCompletionSource = new AwaitableCompletionSource();
-            FindAnyObjectByType<AnimationsTrigger>(FindObjectsInactive.Exclude).Trigger(1, true, _animationAwaitableCompletionSource);
+            Debug.Log(FindInActiveScene<AnimationsTrigger>());
+            FindInActiveScene<AnimationsTrigger>().Trigger(1, true, _animationAwaitableCompletionSource);
+
             await _animationAwaitableCompletionSource.Awaitable;
             
             await SceneManager.UnloadSceneAsync(_transitionSceneName);
+    }
+    
+    public static T FindInActiveScene<T>() where T : Component
+    {
+        Scene activeScene = SceneManager.GetActiveScene();
+        foreach (var root in activeScene.GetRootGameObjects())
+        {
+            T found = root.GetComponentInChildren<T>(true);
+            if (found != null)
+                return found;
+        }
+
+        return null;
     }
 }
