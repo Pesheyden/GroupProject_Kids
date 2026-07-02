@@ -1,249 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8704165035559201469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Ambient
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Ambient
-  Guid:
-    Data1: -1461045546
-    Data2: 1229273844
-    Data3: 87557541
-    Data4: -896221036
-  Banks:
-  - {fileID: 7416632128786598921}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 60682
---- !u!114 &-8038209986773109053
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Pearl SpecialPower
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Pearl SpecialPower
-  Guid:
-    Data1: 1554271197
-    Data2: 1246475273
-    Data3: 424265360
-    Data4: 532518132
-  Banks:
-  - {fileID: 7416632128786598921}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 2750
---- !u!114 &-7067869585869491319
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Rainbow Special Power
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Rainbow Special Power
-  Guid:
-    Data1: 1085087495
-    Data2: 1179397877
-    Data3: -1431705410
-    Data4: 889475224
-  Banks:
-  - {fileID: 7416632128786598921}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 14784
---- !u!114 &-6337807285188042157
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Background
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Background
-  Guid:
-    Data1: -383725223
-    Data2: 1286278518
-    Data3: 365686161
-    Data4: 782890741
-  Banks:
-  - {fileID: 7416632128786598921}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 62592
---- !u!114 &-3934103175099181203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Minty SpecialPower
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Minty SpecialPower
-  Guid:
-    Data1: 1402884711
-    Data2: 1291558892
-    Data3: 799289229
-    Data4: -2146069986
-  Banks:
-  - {fileID: 7416632128786598921}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 1776
---- !u!114 &-540092865642353983
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Walking
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Walking
-  Guid:
-    Data1: -1254664227
-    Data2: 1281356071
-    Data3: -1242902389
-    Data4: -252105859
-  Banks:
-  - {fileID: 7416632128786598921}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 250
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
-  m_Name: FMODStudioCache
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EventCache
-  EditorBanks:
-  - {fileID: 5716768352904858761}
-  - {fileID: 7416632128786598921}
-  EditorEvents:
-  - {fileID: 1578918675455721273}
-  - {fileID: 1416413306716144050}
-  - {fileID: -8704165035559201469}
-  - {fileID: -540092865642353983}
-  - {fileID: -7067869585869491319}
-  - {fileID: 1524179287472809737}
-  - {fileID: -3934103175099181203}
-  - {fileID: -8038209986773109053}
-  - {fileID: 6993553749636254440}
-  - {fileID: -6337807285188042157}
-  EditorParameters: []
-  MasterBanks:
-  - {fileID: 7416632128786598921}
-  StringsBanks:
-  - {fileID: 5716768352904858761}
-  cacheVersion: 131860
-  cacheTime: 639185003224861245
-  SerializableEventsDict:
-  - key: event:/checkpoint
-    index: 0
-  - key: event:/Jumping
-    index: 1
-  - key: event:/Ambient
-    index: 2
-  - key: event:/Walking
-    index: 3
-  - key: event:/Rainbow Special Power
-    index: 4
-  - key: event:/Marsh SpecialPower
-    index: 5
-  - key: event:/Minty SpecialPower
-    index: 6
-  - key: event:/Pearl SpecialPower
-    index: 7
-  - key: event:/MainMenu
-    index: 8
-  - key: event:/Background
-    index: 9
---- !u!114 &1416413306716144050
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Jumping
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Jumping
-  Guid:
-    Data1: -599403223
-    Data2: 1240201910
-    Data3: 1187813033
-    Data4: 386322587
-  Banks:
-  - {fileID: 7416632128786598921}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 1500
---- !u!114 &1524179287472809737
+--- !u!114 &-7486670643977308271
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -270,7 +27,250 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1044
---- !u!114 &1578918675455721273
+--- !u!114 &-6576335937366689736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Background
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Background
+  Guid:
+    Data1: -383725223
+    Data2: 1286278518
+    Data3: 365686161
+    Data4: 782890741
+  Banks:
+  - {fileID: 7416632128786598921}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 62592
+--- !u!114 &-3006996906673779908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Minty SpecialPower
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Minty SpecialPower
+  Guid:
+    Data1: 1402884711
+    Data2: 1291558892
+    Data3: 799289229
+    Data4: -2146069986
+  Banks:
+  - {fileID: 7416632128786598921}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1776
+--- !u!114 &-1617863645335219250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Walking
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Walking
+  Guid:
+    Data1: -1254664227
+    Data2: 1281356071
+    Data3: -1242902389
+    Data4: -252105859
+  Banks:
+  - {fileID: 7416632128786598921}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 250
+--- !u!114 &-1331387824793620655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Rainbow Special Power
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Rainbow Special Power
+  Guid:
+    Data1: 1085087495
+    Data2: 1179397877
+    Data3: -1431705410
+    Data4: 889475224
+  Banks:
+  - {fileID: 7416632128786598921}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 14784
+--- !u!114 &-766248166020239374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Jumping
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Jumping
+  Guid:
+    Data1: -599403223
+    Data2: 1240201910
+    Data3: 1187813033
+    Data4: 386322587
+  Banks:
+  - {fileID: 7416632128786598921}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1500
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EventCache
+  EditorBanks:
+  - {fileID: 5716768352904858761}
+  - {fileID: 7416632128786598921}
+  EditorEvents:
+  - {fileID: -1331387824793620655}
+  - {fileID: 4718018974448673805}
+  - {fileID: -766248166020239374}
+  - {fileID: -7486670643977308271}
+  - {fileID: 854339726202251460}
+  - {fileID: -6576335937366689736}
+  - {fileID: -3006996906673779908}
+  - {fileID: 6164840842619443787}
+  - {fileID: 2671581679495502369}
+  - {fileID: -1617863645335219250}
+  EditorParameters: []
+  MasterBanks:
+  - {fileID: 7416632128786598921}
+  StringsBanks:
+  - {fileID: 5716768352904858761}
+  cacheVersion: 131860
+  cacheTime: 639186083700886407
+  SerializableEventsDict:
+  - key: event:/Rainbow Special Power
+    index: 0
+  - key: event:/checkpoint
+    index: 1
+  - key: event:/Jumping
+    index: 2
+  - key: event:/Marsh SpecialPower
+    index: 3
+  - key: event:/MainMenu
+    index: 4
+  - key: event:/Background
+    index: 5
+  - key: event:/Minty SpecialPower
+    index: 6
+  - key: event:/Ambient
+    index: 7
+  - key: event:/Pearl SpecialPower
+    index: 8
+  - key: event:/Walking
+    index: 9
+--- !u!114 &854339726202251460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/MainMenu
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/MainMenu
+  Guid:
+    Data1: -1104594109
+    Data2: 1280703048
+    Data3: 1346147763
+    Data4: 440883359
+  Banks:
+  - {fileID: 7416632128786598921}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 78000
+--- !u!114 &2671581679495502369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Pearl SpecialPower
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Pearl SpecialPower
+  Guid:
+    Data1: 1554271197
+    Data2: 1246475273
+    Data3: 424265360
+    Data4: 532518132
+  Banks:
+  - {fileID: 7416632128786598921}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2750
+--- !u!114 &4718018974448673805
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -312,12 +312,12 @@ MonoBehaviour:
   Path: FMOD/audioProject/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639185003224861245
+  lastModified: 639186083700886407
   FileSizes:
   - Name: Desktop
     Value: 1372
   Exists: 1
---- !u!114 &6993553749636254440
+--- !u!114 &6164840842619443787
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -327,14 +327,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/MainMenu
+  m_Name: event:/Ambient
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/MainMenu
+  Path: event:/Ambient
   Guid:
-    Data1: -1104594109
-    Data2: 1280703048
-    Data3: 1346147763
-    Data4: 440883359
+    Data1: -1461045546
+    Data2: 1229273844
+    Data3: 87557541
+    Data4: -896221036
   Banks:
   - {fileID: 7416632128786598921}
   IsStream: 1
@@ -343,7 +343,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 78000
+  Length: 60682
 --- !u!114 &7416632128786598921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -359,8 +359,8 @@ MonoBehaviour:
   Path: FMOD/audioProject/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639185003224830842
+  lastModified: 639186083700841081
   FileSizes:
   - Name: Desktop
-    Value: 3632832
+    Value: 3633216
   Exists: 1
