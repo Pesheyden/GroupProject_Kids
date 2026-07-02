@@ -76,7 +76,7 @@ MonoBehaviour:
   - {fileID: 7416632128786598921}
   IsStream: 1
   Is3D: 1
-  IsOneShot: 0
+  IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
@@ -194,7 +194,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 5716768352904858761}
   cacheVersion: 131860
-  cacheTime: 639184643102246780
+  cacheTime: 639185003224861245
   SerializableEventsDict:
   - key: event:/checkpoint
     index: 0
@@ -312,7 +312,7 @@ MonoBehaviour:
   Path: FMOD/audioProject/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639184643102246780
+  lastModified: 639185003224861245
   FileSizes:
   - Name: Desktop
     Value: 1372
@@ -359,8 +359,8 @@ MonoBehaviour:
   Path: FMOD/audioProject/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639184643102231686
+  lastModified: 639185003224830842
   FileSizes:
   - Name: Desktop
-    Value: 3632960
+    Value: 3632832
   Exists: 1

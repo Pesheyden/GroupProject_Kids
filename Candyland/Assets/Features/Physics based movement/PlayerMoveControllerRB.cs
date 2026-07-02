@@ -27,6 +27,7 @@ public class PlayerMoveControllerRB : MonoBehaviour
     [SerializeField] private float _groundCheckDistance = 0.2f;
     [SerializeField] private float _landingCheckDistance = 0.2f;
     [SerializeField] private float _groundSphereRadius = 0.2f;
+    [SerializeField] private float _landingSphereRadius = 1f;
     [SerializeField] private float _fallSpeed = 1f;
 
     [Header("Crouching")]
@@ -377,11 +378,16 @@ public class PlayerMoveControllerRB : MonoBehaviour
         animator.SetBool("IsGrounded", IsGrounded());
         
         
-        Vector3 origin = transform.position + Vector3.up * (_groundSphereRadius + 0.1f);
+        Vector3 origin = transform.position + Vector3.up * (_landingSphereRadius + _landingSphereRadius * 0.1f);
         Ray ray = new Ray(origin, Vector3.down); 
-        animator.SetBool("IsLanding", 
-            Physics.SphereCast(ray, _groundSphereRadius, out _hitInfo, _landingCheckDistance + (_groundSphereRadius + 0.1f)) &&
-            _rb.linearVelocity.y <= 0.2f); 
+        if(Physics.SphereCast(ray, _landingSphereRadius, out _hitInfo, _landingCheckDistance) && _rb.linearVelocity.y <= 0.2f)
+        {
+            animator.SetTrigger("Land");
+        }
+        else
+        {
+            animator.ResetTrigger("Land");
+        }
     }
 
     private void UpdateSounds()
