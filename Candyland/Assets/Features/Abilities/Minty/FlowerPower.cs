@@ -21,6 +21,7 @@ public class FlowerPower : MonoBehaviour, IInteractable
     [ReadOnly] [SerializeField] private List<FlowerSection> flowerSections;
     [SerializeField] private float _stemGrowTime;
     [SerializeField] private float _leaveGrowTime;
+    [SerializeField] private float _petalsGrowTime;
 
     private bool isGrowing = false;
     private bool isGrown = false;
@@ -202,6 +203,7 @@ public class FlowerPower : MonoBehaviour, IInteractable
         if (!isGrown)
         {
             StartCoroutine(GrowFlower());
+            //animator.SetTrigger("Special");
         }
         else
         {

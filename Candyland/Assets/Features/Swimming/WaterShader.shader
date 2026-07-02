@@ -59,7 +59,7 @@ Shader "Unlit/MeltingChocolate"
                 o.pos = UnityObjectToClipPos(v.vertex);
 
                 float3 worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;
-                float2 uv = worldPos.xz * _MainTex_ST.xy + _MainTex_ST.zw;
+                float2 uv = -worldPos.zx * _MainTex_ST.xy + _MainTex_ST.zw;
 
                 uv.y -= _Time.y * _FlowSpeed * 0.5;
 
