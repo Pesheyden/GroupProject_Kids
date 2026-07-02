@@ -10,15 +10,12 @@ public class TwoPlayerSwitcher : MonoBehaviour
     [SerializeField] private List<GameObject> characterPrefabsFirst = new List<GameObject>();
     [SerializeField] private List<GameObject> characterPrefabsSecond = new List<GameObject>();
 
-    //[SerializeField] private PlayerMoveControllerRB currentPlayer;
-
-    /*[Header("Starting Spawn Points")]
-    [SerializeField] private Transform playerOneStart;
-    [SerializeField] private Transform playerTwoStart;*/
-
     [Header("Current Spawned Characters")]
     [SerializeField] private GameObject playerOneCharacter;
     [SerializeField] private GameObject playerTwoCharacter;
+
+    [SerializeField] private Transform playerOneSlot;
+    [SerializeField] private Transform playerTwoSlot;
 
     [Header("Radial Menus")]
     [SerializeField] private GameObject _radialMenu1;
@@ -49,9 +46,25 @@ public class TwoPlayerSwitcher : MonoBehaviour
 
     private void Update()
     {
+        if (playerOneCharacter != null)
+        {
+            moveControllerFirst = playerOneCharacter.GetComponentInChildren<PlayerMoveControllerRB>();
+
+            playerOneSlot.position = moveControllerFirst.transform.position;
+            playerOneSlot.rotation = moveControllerFirst.transform.rotation;
+        }
+
+        if (playerTwoCharacter != null)
+        {
+            moveControllerSecond = playerTwoCharacter.GetComponentInChildren<PlayerMoveControllerRB>();
+
+            playerTwoSlot.position = moveControllerSecond.transform.position;
+            playerTwoSlot.rotation = moveControllerSecond.transform.rotation;
+        }
+
         if (playerOneGamepad != null)
         {
-            moveControllerFirst = playerOneCharacter.GetComponent<PlayerMoveControllerRB>();
+            moveControllerFirst = playerOneCharacter.GetComponentInChildren<PlayerMoveControllerRB>();
 
             if(playerOneGamepad.buttonWest.wasPressedThisFrame)
             {
@@ -67,7 +80,7 @@ public class TwoPlayerSwitcher : MonoBehaviour
 
         if (playerTwoGamepad != null)
         {
-                moveControllerSecond = playerTwoCharacter.GetComponent<PlayerMoveControllerRB>();
+            moveControllerSecond = playerTwoCharacter.GetComponentInChildren<PlayerMoveControllerRB>();
 
             if(playerTwoGamepad.buttonWest.wasPressedThisFrame)
             {
@@ -118,6 +131,7 @@ public class TwoPlayerSwitcher : MonoBehaviour
 
     public void SwitchPlayerOneMinty()
     {
+        Debug.Log(1);
         if(playerTwoIndex == 0)
         {
             CloseRadialMenuFirst();
@@ -125,16 +139,18 @@ public class TwoPlayerSwitcher : MonoBehaviour
             return;
         }
 
-        Vector3 oldPosition = playerOneCharacter.transform.position;
-        Quaternion oldRotation = playerOneCharacter.transform.rotation;
+        Vector3 oldPosition = playerOneSlot.position;
+        Quaternion oldRotation = playerOneSlot.rotation;
 
         CloseRadialMenuFirst();
         Destroy(playerOneCharacter);
+                Debug.Log(1);
         SpawnPlayerOneMinty(playerOneIndex, oldPosition, oldRotation);
     }
 
     public void SwitchPlayerTwoMinty()
     {
+                Debug.Log(11);
         if(playerOneIndex == 0)
         {
             CloseRadialMenuSecond();
@@ -142,8 +158,8 @@ public class TwoPlayerSwitcher : MonoBehaviour
             return;
         }
 
-        Vector3 oldPosition = playerTwoCharacter.transform.position;
-        Quaternion oldRotation = playerTwoCharacter.transform.rotation;
+        Vector3 oldPosition = playerTwoSlot.position;
+        Quaternion oldRotation = playerTwoSlot.rotation;
 
         CloseRadialMenuSecond();
         Destroy(playerTwoCharacter);
@@ -152,6 +168,7 @@ public class TwoPlayerSwitcher : MonoBehaviour
 
     public void SwitchPlayerOneMarsh()
     {
+                Debug.Log(2);
         if(playerTwoIndex == 1)
         {
             CloseRadialMenuFirst();
@@ -159,8 +176,8 @@ public class TwoPlayerSwitcher : MonoBehaviour
             return;
         }
 
-        Vector3 oldPosition = playerOneCharacter.transform.position;
-        Quaternion oldRotation = playerOneCharacter.transform.rotation;
+        Vector3 oldPosition = playerOneSlot.position;
+        Quaternion oldRotation = playerOneSlot.rotation;
 
         CloseRadialMenuFirst();
         Destroy(playerOneCharacter);
@@ -169,6 +186,7 @@ public class TwoPlayerSwitcher : MonoBehaviour
 
     public void SwitchPlayerTwoMarsh()
     {
+                Debug.Log(22);
         if(playerOneIndex == 1)
         {
             CloseRadialMenuSecond();
@@ -176,8 +194,8 @@ public class TwoPlayerSwitcher : MonoBehaviour
             return;
         }
 
-        Vector3 oldPosition = playerTwoCharacter.transform.position;
-        Quaternion oldRotation = playerTwoCharacter.transform.rotation;
+        Vector3 oldPosition = playerTwoSlot.position;
+        Quaternion oldRotation = playerTwoSlot.rotation;
 
         CloseRadialMenuSecond();
         Destroy(playerTwoCharacter);
@@ -186,6 +204,7 @@ public class TwoPlayerSwitcher : MonoBehaviour
 
     public void SwitchPlayerOneRainbow()
     {
+                Debug.Log(3);
         if(playerTwoIndex == 2)
         {
             CloseRadialMenuFirst();
@@ -193,8 +212,8 @@ public class TwoPlayerSwitcher : MonoBehaviour
             return;
         }
 
-        Vector3 oldPosition = playerOneCharacter.transform.position;
-        Quaternion oldRotation = playerOneCharacter.transform.rotation;
+        Vector3 oldPosition = playerOneSlot.position;
+        Quaternion oldRotation = playerOneSlot.rotation;
 
         CloseRadialMenuFirst();
         Destroy(playerOneCharacter);
@@ -203,6 +222,7 @@ public class TwoPlayerSwitcher : MonoBehaviour
 
     public void SwitchPlayerTwoRainbow()
     {
+        Debug.Log(33);
         if(playerOneIndex == 2)
         {
             CloseRadialMenuSecond();
@@ -210,8 +230,8 @@ public class TwoPlayerSwitcher : MonoBehaviour
             return;
         }
 
-        Vector3 oldPosition = playerTwoCharacter.transform.position;
-        Quaternion oldRotation = playerTwoCharacter.transform.rotation;
+        Vector3 oldPosition = playerTwoSlot.position;
+        Quaternion oldRotation = playerTwoSlot.rotation;
 
         CloseRadialMenuSecond();
         Destroy(playerTwoCharacter);
@@ -227,8 +247,8 @@ public class TwoPlayerSwitcher : MonoBehaviour
             return;
         }
 
-        Vector3 oldPosition = playerOneCharacter.transform.position;
-        Quaternion oldRotation = playerOneCharacter.transform.rotation;
+        Vector3 oldPosition = playerOneSlot.position;
+        Quaternion oldRotation = playerOneSlot.rotation;
 
         CloseRadialMenuFirst();
         Destroy(playerOneCharacter);
@@ -244,8 +264,8 @@ public class TwoPlayerSwitcher : MonoBehaviour
             return;
         }
 
-        Vector3 oldPosition = playerTwoCharacter.transform.position;
-        Quaternion oldRotation = playerTwoCharacter.transform.rotation;
+        Vector3 oldPosition = playerTwoSlot.position;
+        Quaternion oldRotation = playerTwoSlot.rotation;
 
         CloseRadialMenuSecond();
         Destroy(playerTwoCharacter);
@@ -255,25 +275,36 @@ public class TwoPlayerSwitcher : MonoBehaviour
     private void SpawnPlayerOneMinty(int index, Vector3 position, Quaternion rotation)
     {
         playerOneCharacter = Instantiate(characterPrefabsFirst[0], position, rotation);
-        moveControllerFirst = playerOneCharacter.GetComponent<PlayerMoveControllerRB>();
+
+        moveControllerFirst = playerOneCharacter.GetComponentInChildren<PlayerMoveControllerRB>();
+        moveControllerFirst.transform.position = position;
+        moveControllerFirst.transform.rotation = rotation;
         moveControllerFirst.enabled = true;
         index = 0;
         playerOneIndex = index;
+        Debug.Log("1 " + position);
     }
 
     private void SpawnPlayerTwoMinty(int index, Vector3 position, Quaternion rotation)
     {
         playerTwoCharacter = Instantiate(characterPrefabsSecond[0], position, rotation);
-        moveControllerSecond = playerTwoCharacter.GetComponent<PlayerMoveControllerRB>();
+
+        moveControllerSecond = playerTwoCharacter.GetComponentInChildren<PlayerMoveControllerRB>();
+        moveControllerSecond.transform.position = position;
+        moveControllerSecond.transform.rotation = rotation;
         moveControllerSecond.enabled = true;
         index = 0;
         playerTwoIndex = index;
+                Debug.Log(position);
     }
 
     private void SpawnPlayerOneMarsh(int index, Vector3 position, Quaternion rotation)
     {
         playerOneCharacter = Instantiate(characterPrefabsFirst[1], position, rotation);
-        moveControllerFirst = playerOneCharacter.GetComponent<PlayerMoveControllerRB>();
+
+        moveControllerFirst = playerOneCharacter.GetComponentInChildren<PlayerMoveControllerRB>();
+        moveControllerFirst.transform.position = position;
+        moveControllerFirst.transform.rotation = rotation;
         moveControllerFirst.enabled = true;
         index = 1;
         playerOneIndex = index;
@@ -282,7 +313,10 @@ public class TwoPlayerSwitcher : MonoBehaviour
     private void SpawnPlayerTwoMarsh(int index, Vector3 position, Quaternion rotation)
     {
         playerTwoCharacter = Instantiate(characterPrefabsSecond[1], position, rotation);
-        moveControllerSecond = playerTwoCharacter.GetComponent<PlayerMoveControllerRB>();
+
+        moveControllerSecond = playerTwoCharacter.GetComponentInChildren<PlayerMoveControllerRB>();
+        moveControllerSecond.transform.position = position;
+        moveControllerSecond.transform.rotation = rotation;
         moveControllerSecond.enabled = true;
         index = 1;
         playerTwoIndex = index;
@@ -290,7 +324,10 @@ public class TwoPlayerSwitcher : MonoBehaviour
     private void SpawnPlayerOneRainbow(int index, Vector3 position, Quaternion rotation)
     {
         playerOneCharacter = Instantiate(characterPrefabsFirst[2], position, rotation);
-        moveControllerFirst = playerOneCharacter.GetComponent<PlayerMoveControllerRB>();
+
+        moveControllerFirst = playerOneCharacter.GetComponentInChildren<PlayerMoveControllerRB>();
+        moveControllerFirst.transform.position = position;
+        moveControllerFirst.transform.rotation = rotation;
         moveControllerFirst.enabled = true;
         index = 2;
         playerOneIndex = index;
@@ -299,7 +336,10 @@ public class TwoPlayerSwitcher : MonoBehaviour
     private void SpawnPlayerTwoRainbow(int index, Vector3 position, Quaternion rotation)
     {
         playerTwoCharacter = Instantiate(characterPrefabsSecond[2], position, rotation);
-        moveControllerSecond = playerTwoCharacter.GetComponent<PlayerMoveControllerRB>();
+
+        moveControllerSecond = playerTwoCharacter.GetComponentInChildren<PlayerMoveControllerRB>();
+        moveControllerSecond.transform.position = position;
+        moveControllerSecond.transform.rotation = rotation;
         moveControllerSecond.enabled = true;
         index = 2;
         playerTwoIndex = index;
@@ -308,7 +348,10 @@ public class TwoPlayerSwitcher : MonoBehaviour
     private void SpawnPlayerOnePearl(int index, Vector3 position, Quaternion rotation)
     {
         playerOneCharacter = Instantiate(characterPrefabsFirst[3], position, rotation);
-        moveControllerFirst = playerOneCharacter.GetComponent<PlayerMoveControllerRB>();
+
+        moveControllerFirst = playerOneCharacter.GetComponentInChildren<PlayerMoveControllerRB>();
+        moveControllerFirst.transform.position = position;
+        moveControllerFirst.transform.rotation = rotation;
         moveControllerFirst.enabled = true;
         index = 3;
         playerOneIndex = index;
@@ -317,7 +360,10 @@ public class TwoPlayerSwitcher : MonoBehaviour
     private void SpawnPlayerTwoPearl(int index, Vector3 position, Quaternion rotation)
     {
         playerTwoCharacter = Instantiate(characterPrefabsSecond[3], position, rotation);
-        moveControllerSecond = playerTwoCharacter.GetComponent<PlayerMoveControllerRB>();
+        
+        moveControllerSecond = playerTwoCharacter.GetComponentInChildren<PlayerMoveControllerRB>();
+        moveControllerSecond.transform.position = position;
+        moveControllerSecond.transform.rotation = rotation;
         moveControllerSecond.enabled = true;
         index = 3;
         playerTwoIndex = index;
