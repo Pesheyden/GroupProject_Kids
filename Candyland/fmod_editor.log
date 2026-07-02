@@ -1,15 +1,27 @@
 [LOG] FMOD_System_Create                       : Header version = 2.03.14. Current version = 2.03.14.
 [LOG] system_create                            : Header version = 2.03.14. Current version = 2.03.14.
-[LOG] SystemI::setOutputInternal               : Setting output to 'FMOD WASAPI Output'
-[LOG] Manager::init                            : maxchannels = 256 studioflags = 00000006 flags 00000000 extradriverdata 0000000000000000.
+[LOG] SystemI::setOutputInternal               : Setting output to 'FMOD Core Audio Output'
+[LOG] Manager::init                            : maxchannels = 256 studioflags = 00000006 flags 00000000 extradriverdata 0x0.
 [LOG] SystemI::init                            : Initialize version=20314 (164239), maxchannels=256, flags=0x00020000
-[LOG] OutputWASAPI::init                       : Mix Format (WAVEFORMATEX): wFormatTag=0xFFFE, nChannels=2, nSamplesPerSec=48000, nAvgBytesPerSec=384000, nBlockAlign=8, wBitsPerSample=32, cbSize=22.
-[LOG] OutputWASAPI::init                       : Mix Format (WAVEFORMATEXTENSIBLE): wValidBitsPerSample=32, dwChannelMask=0x00000003, SubFormat=00000003-0000-0010-8000-00AA00389B71.
-[LOG] OutputWASAPI::init                       : Output buffer size: 2048 samples, latency: 0.00ms, period: 10.00ms, DSP buffer: 512 * 4
+[LOG] OutputCoreAudio::init                    : Output running 2 channels at 48000Hz sample rate.
+[LOG] OutputCoreAudio::init                    : Maximum hardware read size: 1024 samples, Software buffer size: 512 samples, Number of software buffers: 4.
+[LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 0
+[LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x4000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: Yes, Sleep Time: 0, Looping: Yes.
+[LOG] Thread::callback                         : FMOD stream thread finished.
+[LOG] Thread::callback                         : FMOD mixer thread finished.
+[LOG] SystemI::closeInternal                   : Closed.
+[LOG] LiveUpdate::release                      : 
+[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
+[LOG] FMOD_System_Create                       : Header version = 2.03.14. Current version = 2.03.14.
+[LOG] system_create                            : Header version = 2.03.14. Current version = 2.03.14.
+[LOG] SystemI::setOutputInternal               : Setting output to 'FMOD NoSound Output'
+[LOG] Manager::init                            : maxchannels = 256 studioflags = 00000006 flags 00000000 extradriverdata 0x0.
+[LOG] SystemI::init                            : Initialize version=20314 (164239), maxchannels=256, flags=0x00020000
 [LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 0
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x4000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 0000024C632F59E8 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 0x7fad47503608 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
@@ -18,35 +30,78 @@
 [LOG] Manager::init                            : done.
 [LOG] BankLoader::serializeBank                : fileversion = 146, compatVersion = 146 (oldest = 44, newest = 146)
 [LOG] BankLoader::serializeBank                : fileversion = 146, compatVersion = 146 (oldest = 44, newest = 146)
+[LOG] BankLoader::serializeBank                : fileversion = 146, compatVersion = 146 (oldest = 44, newest = 146)
 [LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
-[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
-[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
-[LOG] SystemI::createSoundInternal             : exinfo->length             = 1024768
-[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 12000
-[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000D7645BF088
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
-[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF96954DA70
-[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF96954DA30
-[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF96954DB50
-[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF96954DC10
-[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000024B38C09978
-[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
-[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 4
-[LOG] SystemI::createSoundInternal             : Sample 0/1: name='steps (1)', format=5, channels=1, frequency=48000, lengthbytes=2304, lengthpcm=49536, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.999969.
-[LOG] SoundI::release                          : ambient3 (0000024C6BA2A7E8)
-[LOG] SoundI::release                          :     ambient3 (0000024C39F4BCC8)
-[LOG] SoundI::release                          :     ambient3 (0000024C6BA29078)
-[LOG] SoundI::release                          :  (0000024C5C84DBB8)
-[LOG] SoundI::release                          :     steps (1) (0000024C39F495C8)
-[LOG] Thread::callback                         : FMOD Studio update thread finished.
-[LOG] Thread::callback                         : FMOD Studio bank load thread finished.
-[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
-[LOG] Thread::callback                         : FMOD Studio sample load thread finished.
-[LOG] LiveUpdate::release                      : 
-[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
-[LOG] Thread::callback                         : FMOD stream thread finished.
-[LOG] Thread::callback                         : FMOD mixer thread finished.
-[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
-[LOG] SystemI::closeInternal                   : Closed.
+[WRN] NoSound_MixerThread                      : Stall detected, 2024ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 2038ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 2029ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 2040ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 2044ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 2032ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 2046ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 2026ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 2059ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 1601ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 3754ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 5533ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 1887ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 1894ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 1249ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 1447ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 4050ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 6460ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 4495ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 2199ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 1243ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 3248ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 2182ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 3107ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 3795ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 1546ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 8145ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 3806ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 2801ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 3095ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 3447ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 1103ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 5702ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 9949ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 1660ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 2139ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 1847ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 1898ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 1354ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 2096ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 9252ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 6648ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 1432ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 9224ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 3557ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 1454ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 4120ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 5413ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 4342ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 4534ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 2066ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 4503ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 6587ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 3924ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 3651ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 1149ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 1250ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 2701ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 2153ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 1455ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 2094ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 6308ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 1750ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 1747ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 4156ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 7251ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 23737ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 1423ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 1504ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 2010ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 2653ms since last mix, audio will be discontinuous
+[WRN] NoSound_MixerThread                      : Stall detected, 11788ms since last mix, audio will be discontinuous
+[ERR] ~Global                                  : assertion: 'gSystemInitCount == 0' failed
