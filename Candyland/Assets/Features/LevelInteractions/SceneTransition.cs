@@ -12,7 +12,7 @@ public class SceneTransition : MonoBehaviour
     [SerializeField] private GameObject startButton;
 
     private AwaitableCompletionSource _animationAwaitableCompletionSource;
-    
+
     public async void LoadScene(int index)
     {
         if(playersRequired.AllConnected == false)
@@ -22,8 +22,9 @@ public class SceneTransition : MonoBehaviour
 
             return;
         }
-            var lastScene = SceneManager.GetActiveScene();
-            await SceneTransitionAsync(lastScene,index);
+
+        var lastScene = SceneManager.GetActiveScene();
+        await SceneTransitionAsync(lastScene,index);
     }
     
     private async Task SceneTransitionAsync(Scene unloadScene, int sceneIndex)
