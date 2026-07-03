@@ -71,7 +71,7 @@ namespace Seb.Fluid.Simulation
 		public string ignoreWaterTag = "IgnoreWater";
 		//[HideInInspector] public RenderTexture ColourMap3D;
 
-		List<Collider> collisionColliders = new List<Collider>();
+		public List<Collider> collisionColliders = new List<Collider>();
 		private List<Collider> ignoredWaterColliders = new List<Collider>();
 		ComputeBuffer collisionBoxBuffer;
 		ComputeBuffer collisionSphereBuffer;

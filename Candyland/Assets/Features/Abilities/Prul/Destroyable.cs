@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Destroyable : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class Destroyable : MonoBehaviour
     [SerializeField] private float _explosionStrength;
     [SerializeField] private float _explosionRadius;
     [SerializeField] private float _partsLifeTime;
+    [SerializeField] private float _delay;
+    [SerializeField] private UnityEvent _onDestroy;
 
     private Rigidbody[] _parts;
     public void Destroy(Vector3 contactPoint)
@@ -27,6 +30,7 @@ public class Destroyable : MonoBehaviour
         }
 
         StartCoroutine(LifeCoroutine());
+        Invoke(nameof(OnDestroyEvent), _delay);
     }
     
     private IEnumerator LifeCoroutine()
@@ -42,5 +46,9 @@ public class Destroyable : MonoBehaviour
         {
             Destroy(part.gameObject);
         }
+    }
+    private void OnDestroyEvent() 
+    {        
+        _onDestroy?.Invoke();
     }
 }
