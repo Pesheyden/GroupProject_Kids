@@ -12,16 +12,17 @@ public class SceneTransition : MonoBehaviour
     [SerializeField] private GameObject startButton;
 
     private AwaitableCompletionSource _animationAwaitableCompletionSource;
-    
+
     public async void LoadScene(int index)
     {
-        if(playersRequired && playersRequired.AllConnected == false)
+        if(playersRequired.AllConnected == false)
         {
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(startButton);
 
             return;
-        } 
+        }
+
         var lastScene = SceneManager.GetActiveScene();
         await SceneTransitionAsync(lastScene,index);
     }
@@ -34,7 +35,7 @@ public class SceneTransition : MonoBehaviour
             SceneManager.SetActiveScene(transitionScene);
 
             _animationAwaitableCompletionSource = new AwaitableCompletionSource();
-            FindInActiveScene<AnimationsTrigger>().Trigger(0, true, _animationAwaitableCompletionSource);
+            FindAnyObjectByType<AnimationsTrigger>(FindObjectsInactive.Exclude).Trigger(0, true, _animationAwaitableCompletionSource);
             await _animationAwaitableCompletionSource.Awaitable;
 
             await SceneManager.UnloadSceneAsync(unloadScene);
@@ -42,24 +43,9 @@ public class SceneTransition : MonoBehaviour
             await SceneManager.LoadSceneAsync(sceneIndex, LoadSceneMode.Additive);
 
             _animationAwaitableCompletionSource = new AwaitableCompletionSource();
-            Debug.Log(FindInActiveScene<AnimationsTrigger>());
-            FindInActiveScene<AnimationsTrigger>().Trigger(1, true, _animationAwaitableCompletionSource);
-
+            FindAnyObjectByType<AnimationsTrigger>(FindObjectsInactive.Exclude).Trigger(1, true, _animationAwaitableCompletionSource);
             await _animationAwaitableCompletionSource.Awaitable;
             
             await SceneManager.UnloadSceneAsync(_transitionSceneName);
-    }
-    
-    public static T FindInActiveScene<T>() where T : Component
-    {
-        Scene activeScene = SceneManager.GetActiveScene();
-        foreach (var root in activeScene.GetRootGameObjects())
-        {
-            T found = root.GetComponentInChildren<T>(true);
-            if (found != null)
-                return found;
-        }
-
-        return null;
     }
 }
