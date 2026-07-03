@@ -9,8 +9,14 @@ EditorBuildSettings:
     path: Assets/Design/MainMenu.unity
     guid: 61080218ab92cb54aa927d10dbb2345e
   - enabled: 1
+    path: Assets/Design/Cutscene1.unity
+    guid: a0e95b0cda9b44db188e93744996bebd
+  - enabled: 1
     path: Assets/Design/Level1Design.unity
     guid: 26c1fcc90a971964f893eb92efe4204f
+  - enabled: 1
+    path: Assets/Design/Lvl_2_New.unity
+    guid: 62d05914485674c2b884c069149d3545
   - enabled: 1
     path: Assets/Features/LevelInteractions/TransitionScene.unity
     guid: 6dbc7211356149b47a5f202a7ffeb95a
