@@ -12,11 +12,11 @@ EditorBuildSettings:
     path: Assets/Design/Cutscene1.unity
     guid: a0e95b0cda9b44db188e93744996bebd
   - enabled: 1
-    path: Assets/Design/Level1Design.unity
-    guid: 26c1fcc90a971964f893eb92efe4204f
+    path: Assets/Design/Level1Design 1.unity
+    guid: 9add2414a124de142b524f3e5fc8764e
   - enabled: 1
-    path: Assets/Design/Lvl_2_New.unity
-    guid: 62d05914485674c2b884c069149d3545
+    path: Assets/Design/Lvl_2_New 1.unity
+    guid: 8af1ae541cd0b67449b8602c15078f74
   - enabled: 1
     path: Assets/Features/LevelInteractions/TransitionScene.unity
     guid: 6dbc7211356149b47a5f202a7ffeb95a

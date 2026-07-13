@@ -6,8 +6,8 @@ public class RespawnHandler : MonoBehaviour
     [Header("Settings")] 
     [SerializeField] private float _respawnTime;
     
-    [NaughtyAttributes.ReadOnly] [SerializeField]
-    private Vector3 _spawnPoint;
+    [NaughtyAttributes.ReadOnly]
+    public Vector3 _spawnPoint;
     
     
     public void SetSpawnPoint(Vector3 spawnPoint)

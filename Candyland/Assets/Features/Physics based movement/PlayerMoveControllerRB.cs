@@ -413,6 +413,6 @@ public class PlayerMoveControllerRB : MonoBehaviour
         bool moving = _moveInput.magnitude > 0.1f;
         bool grounded = IsGrounded();
 
-        walking.SetActive(moving && grounded);
+        //walking.SetActive(moving && grounded);
     }
 }

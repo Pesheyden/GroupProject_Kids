@@ -1,9 +1,10 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using NaughtyAttributes;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class SceneTransition : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class SceneTransition : MonoBehaviour
 
     public async void LoadScene(int index)
     {
-        if(playersRequired.AllConnected == false)
+        if(playersRequired&& playersRequired.AllConnected == false)
         {
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(startButton);
@@ -35,7 +36,7 @@ public class SceneTransition : MonoBehaviour
             SceneManager.SetActiveScene(transitionScene);
 
             _animationAwaitableCompletionSource = new AwaitableCompletionSource();
-            FindAnyObjectByType<AnimationsTrigger>(FindObjectsInactive.Exclude).Trigger(0, true, _animationAwaitableCompletionSource);
+            FindAllInActiveScene<AnimationsTrigger>()[0].Trigger(0, true, _animationAwaitableCompletionSource);
             await _animationAwaitableCompletionSource.Awaitable;
 
             await SceneManager.UnloadSceneAsync(unloadScene);
@@ -43,9 +44,22 @@ public class SceneTransition : MonoBehaviour
             await SceneManager.LoadSceneAsync(sceneIndex, LoadSceneMode.Additive);
 
             _animationAwaitableCompletionSource = new AwaitableCompletionSource();
-            FindAnyObjectByType<AnimationsTrigger>(FindObjectsInactive.Exclude).Trigger(1, true, _animationAwaitableCompletionSource);
+            FindAllInActiveScene<AnimationsTrigger>()[0].Trigger(1, true, _animationAwaitableCompletionSource);
             await _animationAwaitableCompletionSource.Awaitable;
             
             await SceneManager.UnloadSceneAsync(_transitionSceneName);
+    }
+
+    public static List<T> FindAllInActiveScene<T>() where T : Component
+    {
+        Scene activeScene = SceneManager.GetActiveScene();
+        List<T> results = new List<T>();
+
+        foreach (var root in activeScene.GetRootGameObjects())
+        {
+            results.AddRange(root.GetComponentsInChildren<T>(true));
+        }
+
+        return results;
     }
 }

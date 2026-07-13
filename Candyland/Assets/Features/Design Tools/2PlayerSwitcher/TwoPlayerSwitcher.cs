@@ -37,11 +37,20 @@ public class TwoPlayerSwitcher : MonoBehaviour
 
     private void Start()
     {
-        if (Gamepad.all.Count > 0)
-            playerOneGamepad = Gamepad.all[0];
 
-        if (Gamepad.all.Count > 1)
-            playerTwoGamepad = Gamepad.all[1];
+        PlayerInput playerOneInput = playerOneCharacter.gameObject.GetComponentInChildren<PlayerInput>();
+        PlayerInput playerTwoInput = playerTwoCharacter.gameObject.GetComponentInChildren<PlayerInput>();
+
+        if (playerOneInput.devices.Count > 0 && playerOneInput.devices[0] is Gamepad gamepad1)
+        {
+            playerOneGamepad = gamepad1;
+        }
+
+        if (playerTwoInput.devices.Count > 0 && playerTwoInput.devices[0] is Gamepad gamepad2)
+        {
+            playerTwoGamepad = gamepad2;
+        }
+
     }
 
     private void Update()
@@ -131,7 +140,6 @@ public class TwoPlayerSwitcher : MonoBehaviour
 
     public void SwitchPlayerOneMinty()
     {
-        Debug.Log(1);
         if(playerTwoIndex == 0)
         {
             CloseRadialMenuFirst();
@@ -144,13 +152,11 @@ public class TwoPlayerSwitcher : MonoBehaviour
 
         CloseRadialMenuFirst();
         Destroy(playerOneCharacter);
-                Debug.Log(1);
         SpawnPlayerOneMinty(playerOneIndex, oldPosition, oldRotation);
     }
 
     public void SwitchPlayerTwoMinty()
     {
-                Debug.Log(11);
         if(playerOneIndex == 0)
         {
             CloseRadialMenuSecond();
@@ -276,6 +282,8 @@ public class TwoPlayerSwitcher : MonoBehaviour
     {
         playerOneCharacter = Instantiate(characterPrefabsFirst[0], position, rotation);
 
+        playerOneCharacter.GetComponentInChildren<RespawnHandler>()._spawnPoint = moveControllerFirst.GetComponent<RespawnHandler>()._spawnPoint;
+
         moveControllerFirst = playerOneCharacter.GetComponentInChildren<PlayerMoveControllerRB>();
         moveControllerFirst.transform.position = position;
         moveControllerFirst.transform.rotation = rotation;
@@ -288,6 +296,8 @@ public class TwoPlayerSwitcher : MonoBehaviour
     private void SpawnPlayerTwoMinty(int index, Vector3 position, Quaternion rotation)
     {
         playerTwoCharacter = Instantiate(characterPrefabsSecond[0], position, rotation);
+
+        playerTwoCharacter.GetComponentInChildren<RespawnHandler>()._spawnPoint = moveControllerSecond.GetComponent<RespawnHandler>()._spawnPoint;
 
         moveControllerSecond = playerTwoCharacter.GetComponentInChildren<PlayerMoveControllerRB>();
         moveControllerSecond.transform.position = position;
@@ -302,6 +312,8 @@ public class TwoPlayerSwitcher : MonoBehaviour
     {
         playerOneCharacter = Instantiate(characterPrefabsFirst[1], position, rotation);
 
+        playerOneCharacter.GetComponentInChildren<RespawnHandler>()._spawnPoint = moveControllerFirst.GetComponent<RespawnHandler>()._spawnPoint;
+
         moveControllerFirst = playerOneCharacter.GetComponentInChildren<PlayerMoveControllerRB>();
         moveControllerFirst.transform.position = position;
         moveControllerFirst.transform.rotation = rotation;
@@ -314,6 +326,8 @@ public class TwoPlayerSwitcher : MonoBehaviour
     {
         playerTwoCharacter = Instantiate(characterPrefabsSecond[1], position, rotation);
 
+        playerTwoCharacter.GetComponentInChildren<RespawnHandler>()._spawnPoint = moveControllerSecond.GetComponent<RespawnHandler>()._spawnPoint;
+
         moveControllerSecond = playerTwoCharacter.GetComponentInChildren<PlayerMoveControllerRB>();
         moveControllerSecond.transform.position = position;
         moveControllerSecond.transform.rotation = rotation;
@@ -324,6 +338,8 @@ public class TwoPlayerSwitcher : MonoBehaviour
     private void SpawnPlayerOneRainbow(int index, Vector3 position, Quaternion rotation)
     {
         playerOneCharacter = Instantiate(characterPrefabsFirst[2], position, rotation);
+
+        playerOneCharacter.GetComponentInChildren<RespawnHandler>()._spawnPoint = moveControllerFirst.GetComponent<RespawnHandler>()._spawnPoint;
 
         moveControllerFirst = playerOneCharacter.GetComponentInChildren<PlayerMoveControllerRB>();
         moveControllerFirst.transform.position = position;
@@ -337,6 +353,8 @@ public class TwoPlayerSwitcher : MonoBehaviour
     {
         playerTwoCharacter = Instantiate(characterPrefabsSecond[2], position, rotation);
 
+        playerTwoCharacter.GetComponentInChildren<RespawnHandler>()._spawnPoint = moveControllerSecond.GetComponent<RespawnHandler>()._spawnPoint;
+
         moveControllerSecond = playerTwoCharacter.GetComponentInChildren<PlayerMoveControllerRB>();
         moveControllerSecond.transform.position = position;
         moveControllerSecond.transform.rotation = rotation;
@@ -349,6 +367,8 @@ public class TwoPlayerSwitcher : MonoBehaviour
     {
         playerOneCharacter = Instantiate(characterPrefabsFirst[3], position, rotation);
 
+        playerOneCharacter.GetComponentInChildren<RespawnHandler>()._spawnPoint = moveControllerFirst.GetComponent<RespawnHandler>()._spawnPoint;
+
         moveControllerFirst = playerOneCharacter.GetComponentInChildren<PlayerMoveControllerRB>();
         moveControllerFirst.transform.position = position;
         moveControllerFirst.transform.rotation = rotation;
@@ -360,7 +380,9 @@ public class TwoPlayerSwitcher : MonoBehaviour
     private void SpawnPlayerTwoPearl(int index, Vector3 position, Quaternion rotation)
     {
         playerTwoCharacter = Instantiate(characterPrefabsSecond[3], position, rotation);
-        
+
+        playerTwoCharacter.GetComponentInChildren<RespawnHandler>()._spawnPoint = moveControllerSecond.GetComponent<RespawnHandler>()._spawnPoint;
+
         moveControllerSecond = playerTwoCharacter.GetComponentInChildren<PlayerMoveControllerRB>();
         moveControllerSecond.transform.position = position;
         moveControllerSecond.transform.rotation = rotation;
